@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Google Workspace</title>
+    <link rel="stylesheet" href="node_modules\bootstrap\dist\css\bootstrap.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+    <script defer src="node_modules\bootstrap\dist\js\bootstrap.min.js"></script>
+    <style>
+        * {
+            font-family: "Roboto", sans-serif;
+        }
+
+        .text-navbar {
+            font-size: 13px;
+        }
+
+        .navbar-nav .nav-item {
+            color: #545454;
+            cursor: pointer;
+        }
+
+        .navbar-nav .nav-item:hover {
+            color: black;
+        }
+
+        .navbar-nav .nav-link {
+            cursor: pointer;
+            color: #1a73e8;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #174ea6;
+        }
+
+        .btn-outline-secondary {
+            border: 0.5px solid rgba(128, 128, 128, 0.37);
+            border-radius: 3px;
+            color: #1a73e8;
+        }
+
+        .btn-outline-secondary:hover {
+            color: #174ea6;
+            background-color: #f1f3f4;
+            border-color: #1a73e879;
+        }
+
+        .btn-primary {
+            border-radius: 3px;
+        }
+
+        /*  */
+
+        .sticky_nav {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .admin {
+            margin-left: 12rem;
+        }
+
+        #video {
+            width: 100%;
+        }
+
+        .box {
+            box-sizing: unset;
+        }
+
+        .product-image {
+            background-size: 32px 32px;
+            width: 32px;
+            height: 32px;
+            gap: 250px;
+        }
+
+        .title {
+            font-size: 48px;
+            line-height: 1.2em;
+            color: #202124;
+            margin: 0 0 16px;
+            font-family: "Google Sans", Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .text {
+            margin: 0 0 24px 5px;
+            font-size: 20px;
+            font-family: "Google Sans", Arial, sans-serif;
+            width: 70%;
+            text-align: left;
+            line-height: 28px;
+        }
+
+        .expand-button {
+            color: #1a73e8;
+        }
+
+        .expand-button:hover {
+            background-color: #1a73e819;
+            color: #1a73e8;
+        }
+
+        .custom-acc {
+            padding-bottom: 15px;
+            padding-top: 15px;
+            border: none;
+            border-bottom: 0.1px solid rgba(128, 128, 128, 0.202);
+        }
+
+        .accordion-header button {
+            color: #1a73e8;
+        }
+
+        .chat_position {
+            position: fixed;
+            bottom: 20px;
+            left: 95%;
+        }
+
+        #toggle_chat {
+            display: block;
+        }
+
+        #chatBox {
+            visibility: hidden;
+        }
+
+        .chatWindow_position {
+            position: fixed;
+            bottom: 20px;
+            left: 70%;
+            width: 350px;
+            height: 575px;
+            border-radius: 25px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            z-index: 100;
+        }
+
+        .chatWindow_position header {
+            height: 50px;
+            width: 350px;
+            margin-left: 0;
+            border-top-right-radius: 25px;
+            border-top-left-radius: 25px;
+            background-color: #1a73e8;
+        }
+    </style>
+</head>
+
+<body class="mb-4">
+    <nav class="navbar navbar-expand-lg bg-light sticky_nav">
+        <div class="container-fluid">
+            <div class="navbar-nav">
+                <img src="./Google_Workspace.svg" alt="" height="25" width="200" />
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-lg-flex justify-content-between mb-2" id="navbarNavAltMarkup">
+                <div class="navbar-nav d-flex align-items-center ms-3">
+                    <div class="nav-item">
+                        <a class="nav-item px-2 text-decoration-none">Solutions</a>
+                        <a class="nav-item px-2 text-decoration-none">Products</a>
+                        <a class="nav-item px-2 text-decoration-none">Industries</a>
+                        <a class="nav-item px-2 text-decoration-none">Pricing</a>
+                        <a class="nav-item px-2 text-decoration-none">Resources</a>
+                    </div>
+                    <div class="nav-item">
+                        <a class="nav-link admin p-0">Admin console</a>
+                    </div>
+                </div>
+                <div class="navbar-nav d-flex align-items-center">
+                    <button class="btn btn-outline-secondary me-2">
+                        Contact Sales
+                    </button>
+                    <button class="btn btn-primary px-4">Start Free Trial</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid d-flex flex-row">
+        <div class="container-fluid bg-white w-50 pt-3">
+            <div class="container-fluid d-flex justify-content-center align-items-center h-100">
+                <div class="container d-flex flex-column justify-content-center align-items-start">
+                    <div class="products container w-100 d-flex flex-row justify-content-start align-items-center mb-4">
+                        <img class="product-image me-2"
+                            src="https://www.gstatic.com/images/branding/product/2x/hh_gmail_32dp.png" alt="" />
+                        <img class="product-image me-2"
+                            src="https://www.gstatic.com/images/branding/product/2x/hh_calendar_32dp.png" alt="" />
+                        <img class="product-image me-2"
+                            src="https://www.gstatic.com/images/branding/product/2x/hh_drive_32dp.png" alt="" />
+                        <img class="product-image me-2"
+                            src="https://www.gstatic.com/images/branding/product/2x/hh_editors_32dp.png" alt="" />
+                        <img class="product-image me-2"
+                            src="https://www.gstatic.com/images/branding/product/2x/hh_meet_32dp.png" alt="" />
+                    </div>
+                    <h1 class="title">
+                        How teams of all sizes connect, create and collaborate.
+                    </h1>
+                    <p class="text">
+                        A flexible, innovative solution for people and organisations to
+                        achieve more.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid bg-gradient w-50 pt-3 box">
+            <video autoplay muted id="video">
+                <source
+                    src="https://kstatic.googleusercontent.com/files/be1405211a291aa959a67fd0a1053c9ba64c96a6bd8cb38372ee499f59b6db51cfc085659a5e69b3580787ecf5dc4b1b97f2d3d5a31b6f0e8e44840455736e23" />
+            </video>
+        </div>
+    </div>
+    <div class="container-fluid row px-5 mt-5">
+        <div class="col-lg-8">
+            <button class="btn expand-button float-end mb-2" onclick="expandAll()" id="expand_all">
+                Expand all
+            </button>
+            <div class="accordion" id="accordionPanelsStayOpenExample">
+                <div class="accordion-item custom-acc">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                            aria-controls="panelsStayOpen-collapseOne">
+                            What's included with Google Workspace (formerly G Suite)?
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse"
+                        aria-labelledby="panelsStayOpen-headingOne">
+                        <div class="accordion-body">
+                            Similar to G Suite, all Google Workspace plans provide a custom
+                            email for your business and include collaboration tools like
+                            Gmail, Calendar, Meet, Chat, Drive, Docs, Sheets, Slides, Forms,
+                            Sites and more. For additional details, visit our plans and
+                            pricing page.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item custom-acc">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                            aria-controls="panelsStayOpen-collapseTwo">
+                            Which Google Workspace plan is right for my business?
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                        aria-labelledby="panelsStayOpen-headingTwo">
+                        <div class="accordion-body">
+                            We have a variety of plans that are designed to meet your unique
+                            business needs. To learn more about the various options, find a
+                            plan that fits your business needs on our plans and pricing
+                            page.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item custom-acc">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                            aria-controls="panelsStayOpen-collapseThree">
+                            Can my company try Google Workspace before committing?
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+                        aria-labelledby="panelsStayOpen-headingThree">
+                        <div class="accordion-body">
+                            Absolutely. All plans feature a free 14-day trial, so you can
+                            start to see the value of Workspace before signing up. Click
+                            here to start your free trial.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item custom-acc">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false"
+                            aria-controls="panelsStayOpen-collapseFour">
+                            How do I sign up for Google Workspace?
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse"
+                        aria-labelledby="panelsStayOpen-headingFour">
+                        <div class="accordion-body">
+                            If you're a business with less than 300 employees, you can get
+                            started online today. Companies with more than 300 employees can
+                            contact sales to learn more about our enterprise plans.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item custom-acc">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false"
+                            aria-controls="panelsStayOpen-collapseThive">
+                            What is the difference between G Suite and Google Workspace?
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse"
+                        aria-labelledby="panelsStayOpen-headingFive">
+                        <div class="accordion-body">
+                            As we've evolved G Suite into a more integrated experience
+                            across our communication and collaboration tools, we've
+                            rebranded to Google Workspace to more accurately represent the
+                            product vision.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card w-100">
+                <div class="card w-100 h-100">
+                    <div class="card-body pt-4 pb-4 pe-4 ps-4">
+                        <strong class="card-title">Explore Learning Centre</strong>
+                        <p class="card-text fw-lighter">
+                            Browse tips, guides and how-to videos made for both new users
+                            and power users.
+                        </p>
+                        <button class="btn btn-outline-secondary me-2">
+                            Contact Sales
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card w-100 mt-3">
+                <div class="card w-100 h-100">
+                    <div class="card-body pt-4 pb-4 pe-4 ps-4">
+                        <strong class="card-title">Get admin help</strong>
+                        <p class="card-text fw-lighter">
+                            Sign in to find specific answers, manage users or get support as
+                            a developer.
+                        </p>
+                        <button class="btn btn-outline-secondary me-2">
+                            Get Support
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-white chatWindow_position ps-0" id="chatBox">
+        <header>
+            <!-- <div> -->
+                <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                    <g fill="none" fill-rule="evenodd">
+                        <circle fill="#4284F4" cx="24" cy="24" r="24"></circle>
+                        <path d="M12 12h24v24H12z"></path>
+                        <path
+                            d="M32 14H16c-1.1 0-1.99.9-1.99 2L14 34l4-4h14c1.1 0 2-.9 2-2V16c0-1.1-.9-2-2-2zm0 14H16V16h16v12zm-14-4h8v2h-8v-2zm0-3h12v2H18v-2zm0-3h12v2H18v-2z"
+                            fill="#FFF" fill-rule="nonzero"></path>
+                    </g>
+                </svg>
+            <!-- </div> -->
+            <div class="icon-close float-end mt-2 me-3" onclick="toggle_chat()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="24" viewBox="0 0 24 24">
+                    <path d="M0 10h18v4h-24z" fill="#FFF"></path>
+                </svg>
+            </div>
+        </header>
+        <!-- Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque earum voluptatibus corrupti nemo quis
+        delectus, error distinctio ducimus veritatis reprehenderit quas, dolor, temporibus eius sed dolores
+        voluptates quia excepturi recusandae! -->
+    </div>
+    <div class="chat_position" id="toggle_chat">
+        <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" onclick="toggle_chat()">
+            <g fill="none" fill-rule="evenodd">
+                <circle fill="#4284F4" cx="24" cy="24" r="24"></circle>
+                <path d="M12 12h24v24H12z"></path>
+                <path
+                    d="M32 14H16c-1.1 0-1.99.9-1.99 2L14 34l4-4h14c1.1 0 2-.9 2-2V16c0-1.1-.9-2-2-2zm0 14H16V16h16v12zm-14-4h8v2h-8v-2zm0-3h12v2H18v-2zm0-3h12v2H18v-2z"
+                    fill="#FFF" fill-rule="nonzero"></path>
+            </g>
+        </svg>
+    </div>
+</body>
+<script>
+    const expandAll = () => {
+        let expandEvents = document.getElementsByClassName("accordion-item");
+        for (let i of expandEvents) {
+            let temp = i.childNodes[3].classList;
+            if (temp.contains("show")) {
+                temp.remove("show");
+                document.getElementById("expand_all").innerHTML = "Expand all";
+            } else {
+                temp.add("show");
+                document.getElementById("expand_all").innerHTML = "Collapse all";
+            }
+        }
+    };
+
+    const toggle_chat = () => {
+        let chatWindow = document.getElementById("toggle_chat");
+        let chatBoxWindow = document.getElementById("chatBox");
+        if (chatWindow.style.display === "block") {
+            console.log("true");
+            chatWindow.style.display = "none";
+            chatBoxWindow.style.visibility = "visible";
+        } else {
+            chatWindow.style.display = "block";
+            chatBoxWindow.style.visibility = "hidden";
+        }
+    }
+</script>
+
+</html>
