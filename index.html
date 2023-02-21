@@ -1,727 +1,657 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Google Workspace</title>
-    <!-- <link rel="stylesheet" href="node_modules\bootstrap\dist\css\bootstrap.min.css" /> -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
-      rel="stylesheet"
-    />
-    <!-- <script defer src="node_modules\bootstrap\dist\js\bootstrap.min.js"></script> -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <style>
-      * {
-        font-family: "Roboto", sans-serif;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Google Workspace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <style>
+    * {
+      font-family: "Roboto", sans-serif;
+    }
+
+    .text-navbar {
+      font-size: 13px;
+    }
+
+    .navbar-nav .nav-item {
+      color: #545454;
+      cursor: pointer;
+    }
+
+    .navbar-nav .nav-item:hover {
+      color: black;
+    }
+
+    .navbar-nav .nav-link {
+      cursor: pointer;
+      color: #1a73e8;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #174ea6;
+    }
+
+    .btn-outline-secondary {
+      border: 0.5px solid rgba(128, 128, 128, 0.37);
+      border-radius: 3px;
+      color: #1a73e8;
+    }
+
+    .btn-outline-secondary:hover {
+      color: #174ea6;
+      background-color: #f1f3f4;
+      border-color: #1a73e879;
+    }
+
+    .btn-primary {
+      border-radius: 3px;
+    }
+
+    /*  */
+
+    .sticky_nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 1px -1px 5px rgba(0, 0, 0, 0.5);
+      height: 65px;
+      background-color: #fff;
+    }
+
+    #custom_button {
+      padding: 11px 28px;
+      font-size: 14px;
+      background-color: #1a73e8;
+      font-weight: bolder;
+      vertical-align: middle;
+      border-radius: 4px;
+      font-weight: 500;
+      letter-spacing: 0;
+      font-family: 'Google Sans', Arial, sans-serif;
+    }
+
+    #custom_button_contact {
+      padding: 11px 28px;
+      font-size: 14px;
+      font-weight: 500;
+      vertical-align: middle;
+      border-radius: 4px;
+      color: #1a73e8;
+      font-weight: 500;
+      letter-spacing: 0;
+      font-family: 'Google Sans', Arial, sans-serif;
+    }
+
+    .custom_button_contact:hover {
+      background-color: #F1F3F4;
+    }
+
+    .admin {
+      margin-left: 8rem;
+      font-weight: 500;
+      /* letter-spacing: 0.8px; */
+      font-family: 'Google Sans', Arial, sans-serif;
+      font-size: 14px;
+    }
+
+    #nav_custom_item {
+      color: #5f6368;
+      letter-spacing: 0.25px;
+      font-size: 14px;
+      font-weight: 400;
+      font-family: "Google Sans", Roboto, Arial, Helvetica, sans-serif;
+    }
+
+    #nav_custom_item:hover {
+      color: black;
+    }
+
+    #video {
+      /* margin-top: 10px; */
+      max-width: 100%;
+      height: 87%;
+    }
+
+    #custom_left_banner {
+      width: calc((100% - 80px) * .6);
+      margin-left: 16px;
+    }
+
+    .box {
+      /* box-sizing: unset; */
+      /* margin-top: 100px;
+      margin-left: 250px; */
+      margin-top: 50px;
+      width: calc(50% - 80px);
+      max-width: calc(362px * 2 + 24px);
+    }
+
+    .product-image {
+      background-size: 32px 32px;
+      width: 32px;
+      height: 32px;
+      gap: 250px;
+    }
+
+    .title {
+      font-size: 54px;
+      line-height: 1.2em;
+      color: #202124;
+      margin: 0 0 16px;
+      font-family: "Google Sans", Arial, sans-serif;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .text {
+      margin: 0 0 24px 5px;
+      font-size: 20px;
+      font-family: "Google Sans", Arial, sans-serif;
+      width: 70%;
+      text-align: left;
+      line-height: 28px;
+    }
+
+    .expand-button {
+      color: #1a73e8;
+    }
+
+    .expand-button:hover {
+      background-color: #1a73e819;
+      color: #1a73e8;
+    }
+
+    .custom-acc {
+      padding-bottom: 15px;
+      padding-top: 15px;
+      border: none;
+      border-bottom: 0.1px solid rgba(128, 128, 128, 0.202);
+    }
+
+    .accordion-header button {
+      color: #1a73e8;
+    }
+
+    /* .chat_position {
+      
+    } */
+
+    #toggle_chat {
+      display: block;
+      position: fixed;
+      bottom: 20px;
+      left: 95%;
+    }
+
+    #chatBox {
+      visibility: hidden;
+    }
+
+    .chatWindow_position {
+      position: fixed;
+      bottom: 20px;
+      left: 69%;
+      width: 375px;
+      height: 575px;
+      border-radius: 25px;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      z-index: 100;
+    }
+
+    .chatWindow_position header {
+      height: 50px;
+      margin-left: 0;
+      border-top-right-radius: 25px;
+      border-top-left-radius: 25px;
+      background-color: #1a73e8;
+    }
+
+    .avatar {
+      border-radius: 50px;
+      background-color: rgba(128, 128, 128, 0.25);
+      text-align: center;
+      height: 35px;
+      width: 35px;
+      border: none;
+      margin: 40px 0 0 10px;
+    }
+
+    .welcome_message {
+      padding: 10px 12px;
+      border: 1px solid rgba(128, 128, 128, 0.26);
+      font-size: 14px;
+      border-radius: 20px;
+      text-align: left;
+      width: 275px;
+    }
+
+    .chat-container {
+      height: 77%;
+    }
+
+    .footer {
+      border-top: 1px solid rgba(128, 128, 128, 0.309);
+      margin-bottom: 0;
+      padding-bottom: 0;
+      height: 275px;
+    }
+
+    .footer-content {
+      height: 50px;
+    }
+
+    .chat_footer_text {
+      font-size: 10px;
+      color: rgba(128, 128, 128, 0.62);
+    }
+
+    .goggle_logo_chat_footer {
+      margin-bottom: 11px;
+      margin-left: 2px;
+    }
+
+    .list-group p {
+      color: #1a73e8;
+    }
+
+    .list-group small {
+      color: rgba(0, 0, 0, 0.697);
+    }
+
+    .list-custom {
+      border-radius: 10px;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+
+    .list-group a {
+      padding: 10px 15px;
+    }
+
+    .chat_textarea {
+      border: none;
+      outline: none;
+      padding: 10px 0 5px 25px;
+    }
+
+    ::placeholder {
+      color: rgba(128, 128, 128, 0.809);
+    }
+
+    .outer_inputbox {
+      height: 50px;
+      /* background-color: orange; */
+      border-top: 1px solid rgba(128, 128, 128, 0.387);
+      border-bottom: 1px solid rgba(128, 128, 128, 0.387);
+    }
+
+    .chat_send_logo {
+      margin-right: 15px;
+    }
+
+    .nav-item a {
+      font-size: 14px;
+    }
+
+    @media screen and (max-width:980px) {
+      #banner_custom {
+        background-color: orangered;
+        flex-wrap: wrap;
+        flex-direction: column;
       }
 
-      .text-navbar {
-        font-size: 13px;
-      }
-
-      .navbar-nav .nav-item {
-        color: #545454;
-        cursor: pointer;
-      }
-
-      .navbar-nav .nav-item:hover {
-        color: black;
-      }
-
-      .navbar-nav .nav-link {
-        cursor: pointer;
-        color: #1a73e8;
-      }
-
-      .navbar-nav .nav-link:hover {
-        color: #174ea6;
-      }
-
-      .btn-outline-secondary {
-        border: 0.5px solid rgba(128, 128, 128, 0.37);
-        border-radius: 3px;
-        color: #1a73e8;
-      }
-
-      .btn-outline-secondary:hover {
-        color: #174ea6;
-        background-color: #f1f3f4;
-        border-color: #1a73e879;
-      }
-
-      .btn-primary {
-        border-radius: 3px;
-      }
-
-      /*  */
-
-      .sticky_nav {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.5);
-      }
-
-      .admin {
-        margin-left: 12rem;
-      }
-
-      #video {
+      #banner_custom #custom_left-banner {
+        flex: 100;
         width: 100%;
       }
+    }
+  </style>
+</head>
 
-      .box {
-        box-sizing: unset;
-      }
-
-      .product-image {
-        background-size: 32px 32px;
-        width: 32px;
-        height: 32px;
-        gap: 250px;
-      }
-
-      .title {
-        font-size: 48px;
-        line-height: 1.2em;
-        color: #202124;
-        margin: 0 0 16px;
-        font-family: "Google Sans", Arial, sans-serif;
-        font-weight: bold;
-      }
-
-      .text {
-        margin: 0 0 24px 5px;
-        font-size: 20px;
-        font-family: "Google Sans", Arial, sans-serif;
-        width: 70%;
-        text-align: left;
-        line-height: 28px;
-      }
-
-      .expand-button {
-        color: #1a73e8;
-      }
-
-      .expand-button:hover {
-        background-color: #1a73e819;
-        color: #1a73e8;
-      }
-
-      .custom-acc {
-        padding-bottom: 15px;
-        padding-top: 15px;
-        border: none;
-        border-bottom: 0.1px solid rgba(128, 128, 128, 0.202);
-      }
-
-      .accordion-header button {
-        color: #1a73e8;
-      }
-
-      .chat_position {
-        position: fixed;
-        bottom: 20px;
-        left: 95%;
-      }
-
-      #toggle_chat {
-        display: block;
-      }
-
-      #chatBox {
-        visibility: hidden;
-      }
-
-      .chatWindow_position {
-        position: fixed;
-        bottom: 20px;
-        left: 69%;
-        width: 375px;
-        height: 575px;
-        border-radius: 25px;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        z-index: 100;
-      }
-
-      .chatWindow_position header {
-        height: 50px;
-        margin-left: 0;
-        border-top-right-radius: 25px;
-        border-top-left-radius: 25px;
-        background-color: #1a73e8;
-      }
-
-      .avatar {
-        border-radius: 50px;
-        background-color: rgba(128, 128, 128, 0.25);
-        text-align: center;
-        height: 35px;
-        width: 35px;
-        border: none;
-        margin: 40px 0 0 10px;
-      }
-
-      .welcome_message {
-        padding: 10px 12px;
-        border: 1px solid rgba(128, 128, 128, 0.26);
-        font-size: 14px;
-        border-radius: 20px;
-        text-align: left;
-        width: 275px;
-      }
-
-      .chat-container {
-        height: 77%;
-      }
-
-      .footer {
-        border-top: 1px solid rgba(128, 128, 128, 0.309);
-        margin-bottom: 0;
-        padding-bottom: 0;
-        height: 275px;
-      }
-
-      .footer-content {
-        height: 50px;
-      }
-
-      .chat_footer_text {
-        font-size: 10px;
-        color: rgba(128, 128, 128, 0.62);
-      }
-
-      .goggle_logo_chat_footer {
-        margin-bottom: 11px;
-        margin-left: 2px;
-      }
-
-      .list-group p {
-        color: #1a73e8;
-      }
-
-      .list-group small {
-        color: rgba(0, 0, 0, 0.697);
-      }
-
-      .list-custom {
-        border-radius: 10px;
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-      }
-
-      .list-group a {
-        padding: 10px 15px;
-      }
-
-      .chat_textarea {
-        border: none;
-        outline: none;
-        padding: 10px 0 5px 25px;
-      }
-
-      ::placeholder {
-        color: rgba(128, 128, 128, 0.809);
-      }
-
-      .outer_inputbox {
-        height: 50px;
-        /* background-color: orange; */
-        border-top: 1px solid rgba(128, 128, 128, 0.387);
-        border-bottom: 1px solid rgba(128, 128, 128, 0.387);
-      }
-
-      .chat_send_logo{
-        margin-right: 15px;
-      }
-    </style>
-  </head>
-
-  <body class="mb-4">
-    <nav class="navbar navbar-expand-lg bg-light sticky_nav">
-      <div class="container-fluid">
-        <div class="navbar-nav">
-          <img src="./Google_Workspace.svg" alt="" height="25" width="200" />
+<body class="mb-4">
+  <nav class="navbar navbar-expand-lg sticky_nav">
+    <div class="container-fluid pe-2">
+      <div class="navbar-nav ms-3">
+        <img src="./Google_Workspace.svg" alt="" height="25" width="200" title="this is logo" />
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse d-lg-flex justify-content-between" id="navbarNavAltMarkup">
+        <div class="navbar-nav d-flex align-items-center ms-3">
+          <div class="nav-item d-flex justify-content-between">
+            <a class="nav-item px-3 text-decoration-none" id="nav_custom_item">Solutions</a>
+            <a class="nav-item px-3 text-decoration-none" id="nav_custom_item">Products</a>
+            <a class="nav-item px-3 text-decoration-none" id="nav_custom_item">Industries</a>
+            <a class="nav-item px-3 text-decoration-none" id="nav_custom_item">Pricing</a>
+            <a class="nav-item px-3 text-decoration-none" id="nav_custom_item">Resources</a>
+          </div>
+          <div class="nav-item">
+            <a class="nav-link admin p-0">Admin console</a>
+          </div>
         </div>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div
-          class="collapse navbar-collapse d-lg-flex justify-content-between mb-2"
-          id="navbarNavAltMarkup"
-        >
-          <div class="navbar-nav d-flex align-items-center ms-3">
-            <div class="nav-item">
-              <a class="nav-item px-2 text-decoration-none">Solutions</a>
-              <a class="nav-item px-2 text-decoration-none">Products</a>
-              <a class="nav-item px-2 text-decoration-none">Industries</a>
-              <a class="nav-item px-2 text-decoration-none">Pricing</a>
-              <a class="nav-item px-2 text-decoration-none">Resources</a>
-            </div>
-            <div class="nav-item">
-              <a class="nav-link admin p-0">Admin console</a>
+        <div class="navbar-nav d-flex align-items-center">
+          <button class="btn btn-outline-secondary me-3" id="custom_button_contact">
+            Contact sales
+          </button>
+          <button class="btn btn-primary fw-semibold" id="custom_button">Start Free Trial</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="container-fluid d-flex flex-row mt-4 pt-2" id="banner_custom">
+    <div class="container-fluid bg-white pe-0" id="custom_left_banner">
+      <div class="container-fluid d-flex justify-content-center align-items-center h-100 pe-0">
+        <div class="container d-flex flex-column justify-content-center align-items-start pe-0">
+          <div class="products container w-100 d-flex flex-row justify-content-start align-items-center mb-4 ps-1">
+            <img class="product-image me-3" src="https://www.gstatic.com/images/branding/product/2x/hh_gmail_32dp.png"
+              alt="" />
+            <img class="product-image me-3"
+              src="https://www.gstatic.com/images/branding/product/2x/hh_calendar_32dp.png" alt="" />
+            <img class="product-image me-2" src="https://www.gstatic.com/images/branding/product/2x/hh_drive_32dp.png"
+              alt="" />
+            <img class="product-image me-3" src="https://www.gstatic.com/images/branding/product/2x/hh_editors_32dp.png"
+              alt="" />
+            <img class="product-image me-3" src="https://www.gstatic.com/images/branding/product/2x/hh_meet_32dp.png"
+              alt="" />
+          </div>
+          <h1 class="title">
+            How teams of all sizes connect, create and collaborate.
+          </h1>
+          <p class="text">
+            A flexible, innovative solution for people and organisations to
+            achieve more.
+          </p>
+          <button class="btn btn-primary fw-semibold" id="custom_button">Start Free Trial</button>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid bg-gradient ps-0 box">
+      <video autoplay muted id="video">
+        <source
+          src="https://kstatic.googleusercontent.com/files/be1405211a291aa959a67fd0a1053c9ba64c96a6bd8cb38372ee499f59b6db51cfc085659a5e69b3580787ecf5dc4b1b97f2d3d5a31b6f0e8e44840455736e23" />
+      </video>
+    </div>
+  </div>
+  <div class="container-fluid row px-5 mt-5">
+    <div class="col-lg-8">
+      <button class="btn expand-button float-end mb-2" onclick="expandAll()" id="expand_all">
+        Expand all
+      </button>
+      <div class="accordion" id="accordionPanelsStayOpenExample">
+        <div class="accordion-item custom-acc">
+          <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+              data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+              aria-controls="panelsStayOpen-collapseOne">
+              What's included with Google Workspace (formerly G Suite)?
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse"
+            aria-labelledby="panelsStayOpen-headingOne">
+            <div class="accordion-body">
+              Similar to G Suite, all Google Workspace plans provide a custom
+              email for your business and include collaboration tools like
+              Gmail, Calendar, Meet, Chat, Drive, Docs, Sheets, Slides, Forms,
+              Sites and more. For additional details, visit our plans and
+              pricing page.
             </div>
           </div>
-          <div class="navbar-nav d-flex align-items-center">
+        </div>
+        <div class="accordion-item custom-acc">
+          <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+              aria-controls="panelsStayOpen-collapseTwo">
+              Which Google Workspace plan is right for my business?
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+            aria-labelledby="panelsStayOpen-headingTwo">
+            <div class="accordion-body">
+              We have a variety of plans that are designed to meet your unique
+              business needs. To learn more about the various options, find a
+              plan that fits your business needs on our plans and pricing
+              page.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item custom-acc">
+          <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+              aria-controls="panelsStayOpen-collapseThree">
+              Can my company try Google Workspace before committing?
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+            aria-labelledby="panelsStayOpen-headingThree">
+            <div class="accordion-body">
+              Absolutely. All plans feature a free 14-day trial, so you can
+              start to see the value of Workspace before signing up. Click
+              here to start your free trial.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item custom-acc">
+          <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false"
+              aria-controls="panelsStayOpen-collapseFour">
+              How do I sign up for Google Workspace?
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse"
+            aria-labelledby="panelsStayOpen-headingFour">
+            <div class="accordion-body">
+              If you're a business with less than 300 employees, you can get
+              started online today. Companies with more than 300 employees can
+              contact sales to learn more about our enterprise plans.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item custom-acc">
+          <h2 class="accordion-header" id="panelsStayOpen-headingFive">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false"
+              aria-controls="panelsStayOpen-collapseThive">
+              What is the difference between G Suite and Google Workspace?
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse"
+            aria-labelledby="panelsStayOpen-headingFive">
+            <div class="accordion-body">
+              As we've evolved G Suite into a more integrated experience
+              across our communication and collaboration tools, we've
+              rebranded to Google Workspace to more accurately represent the
+              product vision.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-12">
+      <div class="card w-100">
+        <div class="card w-100 h-100">
+          <div class="card-body pt-4 pb-4 pe-4 ps-4">
+            <strong class="card-title">Explore Learning Centre</strong>
+            <p class="card-text fw-lighter">
+              Browse tips, guides and how-to videos made for both new users
+              and power users.
+            </p>
             <button class="btn btn-outline-secondary me-2">
               Contact Sales
             </button>
-            <button class="btn btn-primary px-4">Start Free Trial</button>
           </div>
         </div>
       </div>
-    </nav>
-    <div class="container-fluid d-flex flex-row">
-      <div class="container-fluid bg-white w-50 pt-3">
-        <div
-          class="container-fluid d-flex justify-content-center align-items-center h-100"
-        >
-          <div
-            class="container d-flex flex-column justify-content-center align-items-start"
-          >
-            <div
-              class="products container w-100 d-flex flex-row justify-content-start align-items-center mb-4"
-            >
-              <img
-                class="product-image me-2"
-                src="https://www.gstatic.com/images/branding/product/2x/hh_gmail_32dp.png"
-                alt=""
-              />
-              <img
-                class="product-image me-2"
-                src="https://www.gstatic.com/images/branding/product/2x/hh_calendar_32dp.png"
-                alt=""
-              />
-              <img
-                class="product-image me-2"
-                src="https://www.gstatic.com/images/branding/product/2x/hh_drive_32dp.png"
-                alt=""
-              />
-              <img
-                class="product-image me-2"
-                src="https://www.gstatic.com/images/branding/product/2x/hh_editors_32dp.png"
-                alt=""
-              />
-              <img
-                class="product-image me-2"
-                src="https://www.gstatic.com/images/branding/product/2x/hh_meet_32dp.png"
-                alt=""
-              />
-            </div>
-            <h1 class="title">
-              How teams of all sizes connect, create and collaborate.
-            </h1>
-            <p class="text">
-              A flexible, innovative solution for people and organisations to
-              achieve more.
+      <div class="card w-100 mt-3 col-md-6">
+        <div class="card w-100 h-100">
+          <div class="card-body pt-4 pb-4 pe-4 ps-4">
+            <strong class="card-title">Get admin help</strong>
+            <p class="card-text fw-lighter">
+              Sign in to find specific answers, manage users or get support as
+              a developer.
             </p>
-            <button class="btn btn-primary px-4">Start Free Trial</button>
+            <button class="btn btn-outline-secondary me-2">
+              Get Support
+            </button>
           </div>
         </div>
-      </div>
-      <div class="container-fluid bg-gradient w-50 pt-3 box">
-        <video autoplay muted id="video">
-          <source
-            src="https://kstatic.googleusercontent.com/files/be1405211a291aa959a67fd0a1053c9ba64c96a6bd8cb38372ee499f59b6db51cfc085659a5e69b3580787ecf5dc4b1b97f2d3d5a31b6f0e8e44840455736e23"
-          />
-        </video>
       </div>
     </div>
-    <div class="container-fluid row px-5 mt-5">
-      <div class="col-lg-8">
-        <button
-          class="btn expand-button float-end mb-2"
-          onclick="expandAll()"
-          id="expand_all"
-        >
-          Expand all
+  </div>
+  <div class="container-fluid bg-white chatWindow_position ps-0 pe-0 pb-0 mb-0" id="chatBox" onclick="toggle_chat()">
+    <header class="d-flex justify-content-between w-100">
+      <div class="d-flex justify-content-end ms-5 ps-5">
+        <svg class="ms-5" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <g fill="none" fill-rule="evenodd">
+            <circle cx="24" cy="24" r="24"></circle>
+            <path d="M12 12h24v24H12z"></path>
+            <path
+              d="M32 14H16c-1.1 0-1.99.9-1.99 2L14 34l4-4h14c1.1 0 2-.9 2-2V16c0-1.1-.9-2-2-2zm0 14H16V16h16v12zm-14-4h8v2h-8v-2zm0-3h12v2H18v-2zm0-3h12v2H18v-2z"
+              fill="#FFF" fill-rule="nonzero"></path>
+          </g>
+        </svg>
+      </div>
+      <div class="icon-close float-end mt-2 me-3" id="trying">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="24" viewBox="0 0 24 24">
+          <path d="M0 10h18v4h-24z" fill="#fff"></path>
+        </svg>
+      </div>
+    </header>
+    <div class="container-fluid w-auto chat-container">
+      <div class="row">
+        <button class="col-2 align-text-top avatar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100" fit=""
+            preserveAspectRatio="xMidYMid meet" focusable="false">
+            <g fill-rule="nonzero" fill="none">
+              <path
+                d="M35.203 35.373l.007-.001c7.049-7.748 18.925-8.657 27.074-2.073h-.001l11.238-11.225.008.007a35.67 35.67 0 00-33.89-7.526 35.613 35.613 0 00-24.218 24.841 25.635 25.635 0 0119.782-4.023z"
+                fill="#EA4335"></path>
+              <path
+                d="M84.282 39.397a35.666 35.666 0 00-10.753-17.316l-.008-.007-11.238 11.224.001.001a19.751 19.751 0 017.384 15.397v1.98a9.911 9.911 0 018.588 4.946 9.885 9.885 0 01-.001 9.9 9.911 9.911 0 01-8.589 4.946H49.834V86.3h19.834c11.28.005 21.25-7.321 24.6-18.077 3.352-10.756-.696-22.439-9.986-28.827z"
+                fill="#4285F4"></path>
+              <path
+                d="M49.778 70.468H30.035a9.847 9.847 0 01-4.083-.89l.014.007-11.49 11.476a25.648 25.648 0 0015.556 5.24h19.802V70.468h-.056z"
+                fill="#34A853"></path>
+              <path
+                d="M35.203 35.373C23.42 32.953 11.53 39.005 6.565 49.948c-4.964 10.943-1.68 23.861 7.91 31.114l11.49-11.477-.013-.006a9.887 9.887 0 01-5.728-10.413 9.896 9.896 0 018.418-8.394 9.905 9.905 0 0110.417 5.737l11.49-11.477a25.807 25.807 0 00-15.346-9.66z"
+                fill="#FBBC05"></path>
+            </g>
+          </svg>
         </button>
-        <div class="accordion" id="accordionPanelsStayOpenExample">
-          <div class="accordion-item custom-acc">
-            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-              <button
-                class="accordion-button"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseOne"
-                aria-expanded="true"
-                aria-controls="panelsStayOpen-collapseOne"
-              >
-                What's included with Google Workspace (formerly G Suite)?
-              </button>
-            </h2>
-            <div
-              id="panelsStayOpen-collapseOne"
-              class="accordion-collapse collapse"
-              aria-labelledby="panelsStayOpen-headingOne"
-            >
-              <div class="accordion-body">
-                Similar to G Suite, all Google Workspace plans provide a custom
-                email for your business and include collaboration tools like
-                Gmail, Calendar, Meet, Chat, Drive, Docs, Sheets, Slides, Forms,
-                Sites and more. For additional details, visit our plans and
-                pricing page.
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item custom-acc">
-            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseTwo"
-                aria-expanded="false"
-                aria-controls="panelsStayOpen-collapseTwo"
-              >
-                Which Google Workspace plan is right for my business?
-              </button>
-            </h2>
-            <div
-              id="panelsStayOpen-collapseTwo"
-              class="accordion-collapse collapse"
-              aria-labelledby="panelsStayOpen-headingTwo"
-            >
-              <div class="accordion-body">
-                We have a variety of plans that are designed to meet your unique
-                business needs. To learn more about the various options, find a
-                plan that fits your business needs on our plans and pricing
-                page.
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item custom-acc">
-            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseThree"
-                aria-expanded="false"
-                aria-controls="panelsStayOpen-collapseThree"
-              >
-                Can my company try Google Workspace before committing?
-              </button>
-            </h2>
-            <div
-              id="panelsStayOpen-collapseThree"
-              class="accordion-collapse collapse"
-              aria-labelledby="panelsStayOpen-headingThree"
-            >
-              <div class="accordion-body">
-                Absolutely. All plans feature a free 14-day trial, so you can
-                start to see the value of Workspace before signing up. Click
-                here to start your free trial.
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item custom-acc">
-            <h2 class="accordion-header" id="panelsStayOpen-headingFour">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseFour"
-                aria-expanded="false"
-                aria-controls="panelsStayOpen-collapseFour"
-              >
-                How do I sign up for Google Workspace?
-              </button>
-            </h2>
-            <div
-              id="panelsStayOpen-collapseFour"
-              class="accordion-collapse collapse"
-              aria-labelledby="panelsStayOpen-headingFour"
-            >
-              <div class="accordion-body">
-                If you're a business with less than 300 employees, you can get
-                started online today. Companies with more than 300 employees can
-                contact sales to learn more about our enterprise plans.
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item custom-acc">
-            <h2 class="accordion-header" id="panelsStayOpen-headingFive">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseFive"
-                aria-expanded="false"
-                aria-controls="panelsStayOpen-collapseThive"
-              >
-                What is the difference between G Suite and Google Workspace?
-              </button>
-            </h2>
-            <div
-              id="panelsStayOpen-collapseFive"
-              class="accordion-collapse collapse"
-              aria-labelledby="panelsStayOpen-headingFive"
-            >
-              <div class="accordion-body">
-                As we've evolved G Suite into a more integrated experience
-                across our communication and collaboration tools, we've
-                rebranded to Google Workspace to more accurately represent the
-                product vision.
-              </div>
-            </div>
-          </div>
+        <div class="col-10">
+          <p class="mt-3 welcome_message">
+            Hi! I'm your virtual Google Workspace guide. Please select an
+            option below:
+          </p>
         </div>
-      </div>
-      <div class="col-4">
-        <div class="card w-100">
-          <div class="card w-100 h-100">
-            <div class="card-body pt-4 pb-4 pe-4 ps-4">
-              <strong class="card-title">Explore Learning Centre</strong>
-              <p class="card-text fw-lighter">
-                Browse tips, guides and how-to videos made for both new users
-                and power users.
-              </p>
-              <button class="btn btn-outline-secondary me-2">
-                Contact Sales
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="card w-100 mt-3">
-          <div class="card w-100 h-100">
-            <div class="card-body pt-4 pb-4 pe-4 ps-4">
-              <strong class="card-title">Get admin help</strong>
-              <p class="card-text fw-lighter">
-                Sign in to find specific answers, manage users or get support as
-                a developer.
-              </p>
-              <button class="btn btn-outline-secondary me-2">
-                Get Support
-              </button>
-            </div>
+        <div>
+          <div class="list-group list-custom">
+            <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+              <div class="d-flex w-100 justify-content-between">
+                <p class="mb-1">Get started with Google Workspace</p>
+              </div>
+              <small class="mb-1">Custom email, video conferencing, document editors, and more
+                for organizations.</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+              <div class="d-flex w-100 justify-content-between">
+                <p class="mb-1">Google Workspace for Education</p>
+              </div>
+              <small class="mb-1">Virtual classrooms, distance learning tools, and other apps
+                for educators and students.</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+              <div class="d-flex w-100 justify-content-between">
+                <p class="mb-1">Gmail for personal use</p>
+              </div>
+              <small class="mb-1">Free email, video chat, and other Google apps for personal
+                use.</small>
+            </a>
           </div>
         </div>
       </div>
     </div>
-    <div
-      class="container-fluid bg-white chatWindow_position ps-0 pe-0 pb-0 mb-0"
-      id="chatBox"
-    >
-      <header class="d-flex justify-content-between w-100">
-        <div class="d-flex justify-content-end ms-5 ps-5">
-          <svg
-            class="ms-5"
-            width="48"
-            height="48"
-            viewBox="0 0 48 48"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g fill="none" fill-rule="evenodd">
-              <circle cx="24" cy="24" r="24"></circle>
-              <path d="M12 12h24v24H12z"></path>
-              <path
-                d="M32 14H16c-1.1 0-1.99.9-1.99 2L14 34l4-4h14c1.1 0 2-.9 2-2V16c0-1.1-.9-2-2-2zm0 14H16V16h16v12zm-14-4h8v2h-8v-2zm0-3h12v2H18v-2zm0-3h12v2H18v-2z"
-                fill="#FFF"
-                fill-rule="nonzero"
-              ></path>
-            </g>
-          </svg>
-        </div>
-        <div class="icon-close float-end mt-2 me-3" onclick="toggle_chat()">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="24"
-            viewBox="0 0 24 24"
-          >
-            <path d="M0 10h18v4h-24z" fill="#fff"></path>
-          </svg>
-        </div>
-      </header>
-      <div class="container-fluid w-auto chat-container">
-        <div class="row">
-          <button class="col-2 align-text-top avatar">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="100%"
-              height="100%"
-              viewBox="0 0 100 100"
-              fit=""
-              preserveAspectRatio="xMidYMid meet"
-              focusable="false"
-            >
-              <g fill-rule="nonzero" fill="none">
-                <path
-                  d="M35.203 35.373l.007-.001c7.049-7.748 18.925-8.657 27.074-2.073h-.001l11.238-11.225.008.007a35.67 35.67 0 00-33.89-7.526 35.613 35.613 0 00-24.218 24.841 25.635 25.635 0 0119.782-4.023z"
-                  fill="#EA4335"
-                ></path>
-                <path
-                  d="M84.282 39.397a35.666 35.666 0 00-10.753-17.316l-.008-.007-11.238 11.224.001.001a19.751 19.751 0 017.384 15.397v1.98a9.911 9.911 0 018.588 4.946 9.885 9.885 0 01-.001 9.9 9.911 9.911 0 01-8.589 4.946H49.834V86.3h19.834c11.28.005 21.25-7.321 24.6-18.077 3.352-10.756-.696-22.439-9.986-28.827z"
-                  fill="#4285F4"
-                ></path>
-                <path
-                  d="M49.778 70.468H30.035a9.847 9.847 0 01-4.083-.89l.014.007-11.49 11.476a25.648 25.648 0 0015.556 5.24h19.802V70.468h-.056z"
-                  fill="#34A853"
-                ></path>
-                <path
-                  d="M35.203 35.373C23.42 32.953 11.53 39.005 6.565 49.948c-4.964 10.943-1.68 23.861 7.91 31.114l11.49-11.477-.013-.006a9.887 9.887 0 01-5.728-10.413 9.896 9.896 0 018.418-8.394 9.905 9.905 0 0110.417 5.737l11.49-11.477a25.807 25.807 0 00-15.346-9.66z"
-                  fill="#FBBC05"
-                ></path>
-              </g>
-            </svg>
-          </button>
-          <div class="col-10">
-            <p class="mt-3 welcome_message">
-              Hi! I'm your virtual Google Workspace guide. Please select an
-              option below:
-            </p>
-          </div>
-          <div>
-            <div class="list-group list-custom">
-              <a
-                href="#"
-                class="list-group-item list-group-item-action"
-                aria-current="true"
-              >
-                <div class="d-flex w-100 justify-content-between">
-                  <p class="mb-1">Get started with Google Workspace</p>
-                </div>
-                <small class="mb-1"
-                  >Custom email, video conferencing, document editors, and more
-                  for organizations.</small
-                >
-              </a>
-              <a href="#" class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                  <p class="mb-1">Google Workspace for Education</p>
-                </div>
-                <small class="mb-1"
-                  >Virtual classrooms, distance learning tools, and other apps
-                  for educators and students.</small
-                >
-              </a>
-              <a href="#" class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                  <p class="mb-1">Gmail for personal use</p>
-                </div>
-                <small class="mb-1"
-                  >Free email, video chat, and other Google apps for personal
-                  use.</small
-                >
-              </a>
-            </div>
-          </div>
-        </div>
+    <footer class="footer">
+      <div class="outer_inputbox d-flex align-items-center">
+        <input type="text" name="" id="" size="36" class="chat_textarea" placeholder="Enter message..." />
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 48 48" fit=""
+          preserveAspectRatio="xMidYMid meet" focusable="false" class="chat_send_logo">
+          <path d="M4.02 42L46 24 4.02 6 4 20l30 4-30 4z" fill="gray"></path>
+        </svg>
       </div>
-      <footer class="footer">
-        <div class="outer_inputbox d-flex align-items-center">
-          <input
-            type="text"
-            name=""
-            id=""
-            size="36"
-            class="chat_textarea"
-            placeholder="Enter message..."
-          />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="100%"
-            height="100%"
-            viewBox="0 0 48 48"
-            fit=""
-            preserveAspectRatio="xMidYMid meet"
-            focusable="false"
-            class="chat_send_logo"
-          >
-            <path d="M4.02 42L46 24 4.02 6 4 20l30 4-30 4z" fill="gray"></path>
-          </svg>
-        </div>
-        <div
-          class="footer-content d-flex align-items-center justify-content-center"
-        >
-          <p class="chat_footer_text mt-1">powered by</p>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="45"
-            height="15"
-            viewBox="0 0 45 15"
-            class="goggle_logo_chat_footer"
-          >
-            <g fill="#AFB5BB" fill-rule="evenodd">
-              <path
-                d="M39.615 7.823l3.197-1.328c-.176-.447-.704-.758-1.327-.758-.8 0-1.91.704-1.87 2.086m3.753 1.287l1.219.813c-.393.582-1.341 1.585-2.98 1.585-2.032 0-3.55-1.572-3.55-3.577 0-2.127 1.531-3.576 3.373-3.576 1.856 0 2.764 1.476 3.062 2.276l.163.406-4.782 1.978c.365.718.934 1.084 1.734 1.084.799 0 1.354-.393 1.76-.99M35.688 11.291h1.572V.778h-1.572zM33.105 7.945c0-1.26-.84-2.181-1.91-2.181-1.084 0-1.96.92-1.96 2.18 0 1.247.876 2.155 1.96 2.155 1.07 0 1.91-.908 1.91-2.154zm1.382-3.373v6.42c0 2.642-1.558 3.726-3.4 3.726-1.735 0-2.778-1.165-3.17-2.113l1.368-.569c.244.582.84 1.273 1.802 1.273 1.178 0 1.91-.731 1.91-2.1v-.514h-.054c-.352.433-1.03.813-1.883.813-1.789 0-3.397-1.558-3.397-3.563 0-2.019 1.608-3.59 3.397-3.59.853 0 1.53.379 1.883.799h.054v-.582h1.49zm-9.142 3.36c0-1.288-.93-2.168-2.01-2.168-1.08 0-2.01.88-2.01 2.167 0 1.273.93 2.168 2.01 2.168 1.08 0 2.01-.895 2.01-2.168m1.565 0c0 2.06-1.606 3.577-3.575 3.577-1.97 0-3.576-1.518-3.576-3.577 0-2.072 1.606-3.576 3.576-3.576S26.91 5.859 26.91 7.93m-9.469 0c0-1.287-.93-2.167-2.01-2.167-1.08 0-2.01.88-2.01 2.167 0 1.273.93 2.168 2.01 2.168 1.08 0 2.01-.895 2.01-2.168m1.566 0c0 2.06-1.606 3.577-3.576 3.577S11.856 9.99 11.856 7.93c0-2.072 1.605-3.576 3.575-3.576 1.97 0 3.576 1.504 3.576 3.576m-7.913-2.587c.06.364.086.722.086 1.056 0 1.138-.29 2.547-1.293 3.55-.976 1.016-2.222 1.558-3.875 1.558-3.062 0-5.636-2.493-5.636-5.555C.376 2.892 2.95.4 6.012.4c1.694 0 2.9.663 3.807 1.53L8.749 3a3.868 3.868 0 00-2.737-1.084c-2.236 0-3.983 1.802-3.983 4.037 0 2.236 1.747 4.038 3.983 4.038 1.45 0 2.276-.583 2.804-1.111.434-.434.728-1.058.838-2.018H6.022V5.344h5.072z"
-              ></path>
-            </g>
-          </svg>
-        </div>
-      </footer>
-      <!-- Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque earum voluptatibus corrupti nemo quis
+      <div class="footer-content d-flex align-items-center justify-content-center">
+        <p class="chat_footer_text mt-1">powered by</p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="45" height="15" viewBox="0 0 45 15"
+          class="goggle_logo_chat_footer">
+          <g fill="#AFB5BB" fill-rule="evenodd">
+            <path
+              d="M39.615 7.823l3.197-1.328c-.176-.447-.704-.758-1.327-.758-.8 0-1.91.704-1.87 2.086m3.753 1.287l1.219.813c-.393.582-1.341 1.585-2.98 1.585-2.032 0-3.55-1.572-3.55-3.577 0-2.127 1.531-3.576 3.373-3.576 1.856 0 2.764 1.476 3.062 2.276l.163.406-4.782 1.978c.365.718.934 1.084 1.734 1.084.799 0 1.354-.393 1.76-.99M35.688 11.291h1.572V.778h-1.572zM33.105 7.945c0-1.26-.84-2.181-1.91-2.181-1.084 0-1.96.92-1.96 2.18 0 1.247.876 2.155 1.96 2.155 1.07 0 1.91-.908 1.91-2.154zm1.382-3.373v6.42c0 2.642-1.558 3.726-3.4 3.726-1.735 0-2.778-1.165-3.17-2.113l1.368-.569c.244.582.84 1.273 1.802 1.273 1.178 0 1.91-.731 1.91-2.1v-.514h-.054c-.352.433-1.03.813-1.883.813-1.789 0-3.397-1.558-3.397-3.563 0-2.019 1.608-3.59 3.397-3.59.853 0 1.53.379 1.883.799h.054v-.582h1.49zm-9.142 3.36c0-1.288-.93-2.168-2.01-2.168-1.08 0-2.01.88-2.01 2.167 0 1.273.93 2.168 2.01 2.168 1.08 0 2.01-.895 2.01-2.168m1.565 0c0 2.06-1.606 3.577-3.575 3.577-1.97 0-3.576-1.518-3.576-3.577 0-2.072 1.606-3.576 3.576-3.576S26.91 5.859 26.91 7.93m-9.469 0c0-1.287-.93-2.167-2.01-2.167-1.08 0-2.01.88-2.01 2.167 0 1.273.93 2.168 2.01 2.168 1.08 0 2.01-.895 2.01-2.168m1.566 0c0 2.06-1.606 3.577-3.576 3.577S11.856 9.99 11.856 7.93c0-2.072 1.605-3.576 3.575-3.576 1.97 0 3.576 1.504 3.576 3.576m-7.913-2.587c.06.364.086.722.086 1.056 0 1.138-.29 2.547-1.293 3.55-.976 1.016-2.222 1.558-3.875 1.558-3.062 0-5.636-2.493-5.636-5.555C.376 2.892 2.95.4 6.012.4c1.694 0 2.9.663 3.807 1.53L8.749 3a3.868 3.868 0 00-2.737-1.084c-2.236 0-3.983 1.802-3.983 4.037 0 2.236 1.747 4.038 3.983 4.038 1.45 0 2.276-.583 2.804-1.111.434-.434.728-1.058.838-2.018H6.022V5.344h5.072z">
+            </path>
+          </g>
+        </svg>
+      </div>
+    </footer>
+    <!-- Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque earum voluptatibus corrupti nemo quis
         delectus, error distinctio ducimus veritatis reprehenderit quas, dolor, temporibus eius sed dolores
         voluptates quia excepturi recusandae! -->
-    </div>
-    <div class="chat_position" id="toggle_chat" onclick="toggle_chat()">
-      <svg
-        width="48"
-        height="48"
-        viewBox="0 0 48 48"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g fill="none" fill-rule="evenodd">
-          <circle fill="#4284F4" cx="24" cy="24" r="24"></circle>
-          <path d="M12 12h24v24H12z"></path>
-          <path
-            d="M32 14H16c-1.1 0-1.99.9-1.99 2L14 34l4-4h14c1.1 0 2-.9 2-2V16c0-1.1-.9-2-2-2zm0 14H16V16h16v12zm-14-4h8v2h-8v-2zm0-3h12v2H18v-2zm0-3h12v2H18v-2z"
-            fill="#FFF"
-            fill-rule="nonzero"
-          ></path>
-        </g>
-      </svg>
-    </div>
-  </body>
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"
-  ></script>
-  <script>
-    const expandAll = () => {
-      let expandEvents = document.getElementsByClassName("accordion-item");
-      for (let i of expandEvents) {
-        let temp = i.childNodes[3].classList;
-        if (temp.contains("show")) {
-          temp.remove("show");
-          document.getElementById("expand_all").innerHTML = "Expand all";
-        } else {
-          temp.add("show");
-          document.getElementById("expand_all").innerHTML = "Collapse all";
-        }
-      }
-    };
-
-    const toggle_chat = () => {
-      console.log("entred");
-      let chatWindow = document.getElementById("toggle_chat");
-      let chatBoxWindow = document.getElementById("chatBox");
-      if (chatWindow.style.display === "block") {
-        console.log("true");
-        chatWindow.style.display = "none";
-        chatBoxWindow.style.visibility = "visible";
+  </div>
+  <div class="chat_position" id="toggle_chat" onclick="toggle_chat()">
+    <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" fill-rule="evenodd">
+        <circle fill="#4284F4" cx="24" cy="24" r="24"></circle>
+        <path d="M12 12h24v24H12z"></path>
+        <path
+          d="M32 14H16c-1.1 0-1.99.9-1.99 2L14 34l4-4h14c1.1 0 2-.9 2-2V16c0-1.1-.9-2-2-2zm0 14H16V16h16v12zm-14-4h8v2h-8v-2zm0-3h12v2H18v-2zm0-3h12v2H18v-2z"
+          fill="#FFF" fill-rule="nonzero"></path>
+      </g>
+    </svg>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script>
+  const expandAll = () => {
+    let expandEvents = document.getElementsByClassName("accordion-item");
+    for (let i of expandEvents) {
+      let temp = i.childNodes[3].classList;
+      if (temp.contains("show")) {
+        temp.remove("show");
+        document.getElementById("expand_all").innerHTML = "Expand all";
       } else {
-        chatWindow.style.display = "block";
-        chatBoxWindow.style.visibility = "hidden";
+        temp.add("show");
+        document.getElementById("expand_all").innerHTML = "Collapse all";
       }
-    };
-  </script>
+    }
+  };
+
+  const toggle_chat = () => {
+    console.log("entred");
+    let chatWindow = document.getElementById("toggle_chat");
+    let chatBoxWindow = document.getElementById("chatBox");
+    if (chatWindow.style.display === "block") {
+      console.log("true");
+      chatWindow.style.display = "none";
+      chatBoxWindow.style.visibility = "visible";
+    } else {
+      console.log("false")
+      chatWindow.style.display = "block";
+      chatBoxWindow.style.visibility = "hidden";
+    }
+  };
+
+</script>
+
 </html>
