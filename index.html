@@ -6,391 +6,125 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Google Workspace</title>
+  <link rel="stylesheet" href="reset.css">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet" />
-  <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@500&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-  <style>
-    * {
-      font-family: "Roboto", sans-serif;
-    }
-
-    .text-navbar {
-      font-size: 13px;
-    }
-
-    .navbar-nav .nav-item {
-      color: #545454;
-      cursor: pointer;
-    }
-
-    .navbar-nav .nav-item:hover {
-      color: black;
-    }
-
-    .navbar-nav .nav-link {
-      cursor: pointer;
-      color: #1a73e8;
-    }
-
-    .navbar-nav .nav-link:hover {
-      color: #174ea6;
-    }
-
-    .btn-outline-secondary {
-      border: 0.5px solid rgba(128, 128, 128, 0.37);
-      border-radius: 3px;
-      color: #1a73e8;
-    }
-
-    .btn-outline-secondary:hover {
-      color: #174ea6;
-      background-color: #f1f3f4;
-      border-color: #1a73e879;
-    }
-
-    .btn-primary {
-      border-radius: 3px;
-    }
-
-    /*  */
-
-    .sticky_nav {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      box-shadow: 1px -1px 5px rgba(0, 0, 0, 0.5);
-      height: 65px;
-      background-color: #fff;
-    }
-
-    #custom_button {
-      padding: 11px 28px;
-      font-size: 14px;
-      background-color: #1a73e8;
-      font-weight: bolder;
-      vertical-align: middle;
-      border-radius: 4px;
-      font-weight: 500;
-      letter-spacing: 0;
-      font-family: 'Google Sans', Arial, sans-serif;
-      min-width: 151px;
-    }
-
-    #custom_button_contact {
-      padding: 11px 28px;
-      font-size: 14px;
-      font-weight: 500;
-      vertical-align: middle;
-      border-radius: 4px;
-      color: #1a73e8;
-      font-weight: 500;
-      letter-spacing: 0;
-      font-family: 'Google Sans', Arial, sans-serif;
-      min-width: 150px;
-    }
-
-    .custom_button_contact:hover {
-      background-color: #F1F3F4;
-    }
-
-    .admin {
-      font-weight: 500;
-      font-family: 'Google Sans', Arial, sans-serif;
-      font-size: 14px;
-    }
-
-    #custom_nav_button_bar {
-      width: 35%;
-    }
-
-    #navbarNavAltMarkup {
-      gap: 20px;
-    }
-
-    #nav_custom_item {
-      color: #5f6368;
-      letter-spacing: 0.25px;
-      font-size: 14px;
-      /* font-weight: 400; */
-      font-family: "Google Sans", Roboto, Arial, Helvetica, sans-serif;
-    }
-
-    #nav_custom_item:hover {
-      color: black;
-    }
-
-    .custom_responsive_nav {
-      display: none;
-    }
-
-    #video {
-      /* margin-top: 10px; */
-      max-width: 100%;
-      height: 87%;
-    }
-
-    #custom_left_banner {
-      width: calc((100% - 80px) * .6);
-      margin-left: 16px;
-    }
-
-    .box {
-      /* box-sizing: unset; */
-      /* margin-top: 100px;
-      margin-left: 250px; */
-      margin-top: 50px;
-      width: calc(50% - 80px);
-      max-width: calc(362px * 2 + 24px);
-    }
-
-    .product-image {
-      background-size: 32px 32px;
-      width: 32px;
-      height: 32px;
-      gap: 250px;
-    }
-
-    .title {
-      font-size: 54px;
-      line-height: 1.2em;
-      color: #202124;
-      margin: 0 0 16px;
-      font-family: "Google Sans", Arial, sans-serif;
-      font-weight: 800;
-      letter-spacing: 1px;
-    }
-
-    .text {
-      margin: 0 0 24px 5px;
-      font-size: 20px;
-      font-family: "Google Sans", Arial, sans-serif;
-      width: 70%;
-      text-align: left;
-      line-height: 28px;
-    }
-
-    .expand-button {
-      color: #1a73e8;
-    }
-
-    .expand-button:hover {
-      background-color: #1a73e819;
-      color: #1a73e8;
-    }
-
-    .custom-acc {
-      padding-bottom: 15px;
-      padding-top: 15px;
-      border: none;
-      border-bottom: 0.1px solid rgba(128, 128, 128, 0.202);
-    }
-
-    .accordion-header button {
-      color: #1a73e8;
-    }
-
-    /* .chat_position {
-      
-    } */
-
-    #toggle_chat {
-      display: block;
-      position: fixed;
-      bottom: 20px;
-      left: 95%;
-    }
-
-    #chatBox {
-      visibility: hidden;
-    }
-
-    .chatWindow_position {
-      position: fixed;
-      bottom: 20px;
-      left: 69%;
-      width: 375px;
-      height: 575px;
-      border-radius: 25px;
-      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-      z-index: 100;
-    }
-
-    .chatWindow_position header {
-      height: 50px;
-      margin-left: 0;
-      border-top-right-radius: 25px;
-      border-top-left-radius: 25px;
-      background-color: #1a73e8;
-    }
-
-    .avatar {
-      border-radius: 50px;
-      background-color: rgba(128, 128, 128, 0.25);
-      text-align: center;
-      height: 35px;
-      width: 35px;
-      border: none;
-      margin: 40px 0 0 10px;
-    }
-
-    .welcome_message {
-      padding: 10px 12px;
-      border: 1px solid rgba(128, 128, 128, 0.26);
-      font-size: 14px;
-      border-radius: 20px;
-      text-align: left;
-      width: 275px;
-    }
-
-    .chat-container {
-      height: 77%;
-    }
-
-    .footer {
-      border-top: 1px solid rgba(128, 128, 128, 0.309);
-      margin-bottom: 0;
-      padding-bottom: 0;
-      height: 275px;
-    }
-
-    .footer-content {
-      height: 50px;
-    }
-
-    .chat_footer_text {
-      font-size: 10px;
-      color: rgba(128, 128, 128, 0.62);
-    }
-
-    .goggle_logo_chat_footer {
-      margin-bottom: 11px;
-      margin-left: 2px;
-    }
-
-    .list-group p {
-      color: #1a73e8;
-    }
-
-    .list-group small {
-      color: rgba(0, 0, 0, 0.697);
-    }
-
-    .list-custom {
-      border-radius: 10px;
-      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    }
-
-    .list-group a {
-      padding: 10px 15px;
-    }
-
-    .chat_textarea {
-      border: none;
-      outline: none;
-      padding: 10px 0 5px 25px;
-    }
-
-    ::placeholder {
-      color: rgba(128, 128, 128, 0.809);
-    }
-
-    .outer_inputbox {
-      height: 50px;
-      /* background-color: orange; */
-      border-top: 1px solid rgba(128, 128, 128, 0.387);
-      border-bottom: 1px solid rgba(128, 128, 128, 0.387);
-    }
-
-    .chat_send_logo {
-      margin-right: 15px;
-    }
-
-    .nav-item a {
-      font-size: 14px;
-    }
-
-    @media screen and (max-width:980px) {
-      #banner_custom {
-        flex-wrap: wrap;
-        flex-direction: column;
-        padding-left: 0;
-      }
-
-      #custom_left_banner {
-        width: 100% !important;
-      }
-
-      #custom_banner {
-        align-items: center !important;
-      }
-
-      .products {
-        justify-content: center !important;
-        align-items: center;
-      }
-
-      .title {
-        font-size: 48px;
-        text-align: center;
-        line-height: 58px;
-        width: 103%;
-      }
-
-      .text {
-        font-size: 16px;
-        text-align: center;
-        width: 100%;
-      }
-
-      .box {
-        width: 100%;
-      }
-    }
-
-
-    @media screen and (max-width:1155px) and (min-width: 992px) {
-      .custom_responsive_nav {
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
-      }
-
-      #custom_remove-nav {
-        /* visibility: hidden; */
-        display: none !important;
-      }
-
-      #responive_button_bar{
-        display: flex !important;
-        align-items: center;
-        justify-content: space-between !important;
-        gap: 50%;
-        /* width: 100% !important; */
-      }
-      
-
-      /* .custom_nav_button_bar{
-        width: 100%;
-      } */
-    }
-  </style>
+  <link rel="stylesheet" href="index.css">
 </head>
 
-<body class="mb-4">
+<body class="mb-4" style="position: relative;">
   <nav class="navbar navbar-expand-lg d-flex flex-column sticky_nav bg-white">
     <div class="container-fluid pe-2" id="responive_button_bar">
       <div class="navbar-nav ms-3">
+        <div class="outer-menu" id="hamburger_menu">
+          <input class="checkbox-toggle" type="checkbox" />
+          <div class="hamburger">
+            <div></div>
+          </div>
+          <div class="container-fluid w-100 d-flex flex-column justify-content-between align-items-center p-0 menu"
+            id="custom_responsive_navbar">
+            <div class="w-50 w-100" id="custom_responsive_accordion_parent">
+              <!-- <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item border-bottom-0">
+                  <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                      Solutions
+                    </button>
+                  </h2>
+                  <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">Placeholder content for this accordion, which is intended to
+                      demonstrate the
+                      <code>.accordion-flush</code> class. This is the first item's accordion body.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item border-bottom-0">
+                  <h2 class="accordion-header" id="flush-headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                      Products
+                    </button>
+                  </h2>
+                  <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">Placeholder content for this accordion, which is intended to
+                      demonstrate the
+                      <code>.accordion-flush</code> class. This is the second item's accordion body. Let's
+                      imagine
+                      this being
+                      filled with some actual content.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item border-bottom-0">
+                  <h2 class="accordion-header" id="flush-headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                      Industries
+                    </button>
+                  </h2>
+                  <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">Placeholder content for this accordion, which is intended to
+                      demonstrate the
+                      <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing
+                      more
+                      exciting
+                      happening here in terms of content, but just filling up the space to make it look, at
+                      least
+                      at first
+                      glance, a bit more representative of how this would look in a real-world application.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item border-bottom-0" id="pricing_parent_responisve">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button border-bottom-0" id="pricing_responsive">
+                      Pricing
+                    </button>
+                  </h2>
+                </div>
+                <div class="accordion-item border-bottom-0">
+                  <h2 class="accordion-header" id="flush-headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                      Resources
+                    </button>
+                  </h2>
+                  <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">Placeholder content for this accordion, which is intended to
+                      demonstrate the
+                      <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing
+                      more
+                      exciting
+                      happening here in terms of content, but just filling up the space to make it look, at
+                      least
+                      at first
+                      glance, a bit more representative of how this would look in a real-world application.
+                    </div>
+                  </div>
+                </div>
+                  <a class="nav-link admin">Admin console</a>
+              </div> -->
+            </div>
+            <div class="w-50 bg-gradient w-100 row pe-3 ps-3 pt-4 border-top"
+              style="box-shadow: 0 10px 17px 0px #3f3f3f">
+              <button class="btn btn-outline-secondary me-2 col-12 mb-2">
+                Contact Sales
+              </button>
+              <button class="btn btn-primary fw-semibold col-12 mb-3" id="custom_button">Start Free Trial</button>
+            </div>
+          </div>
+        </div>
         <img src="./Google_Workspace.svg" alt="" height="25" width="200" title="this is logo" />
       </div>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
       <div class="collapse navbar-collapse d-lg-flex" id="navbarNavAltMarkup">
         <div class="navbar-nav d-flex align-items-center justify-content-between ms-3 w-75" id="custom_remove-nav">
           <div class="nav-item d-flex justify-content-between">
@@ -428,7 +162,7 @@
     </div>
     </div>
   </nav>
-  <div class="container-fluid d-flex mt-5 pt-2" id="banner_custom">
+  <div class="container-fluid d-flex mt-4 pt-2" id="banner_custom">
     <div class="container-fluid bg-white pe-0 me-0" id="custom_left_banner">
       <div class="container-fluid d-flex justify-content-center align-items-center h-100 pe-0">
         <div class="container d-flex flex-column justify-content-center align-items-start pe-0" id="custom_banner">
@@ -470,8 +204,8 @@
       <div class="accordion" id="accordionPanelsStayOpenExample">
         <div class="accordion-item custom-acc">
           <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-              data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false"
               aria-controls="panelsStayOpen-collapseOne">
               What's included with Google Workspace (formerly G Suite)?
             </button>
@@ -592,10 +326,9 @@
       </div>
     </div>
   </div>
-  <div class="container-fluid bg-white chatWindow_position ps-0 pe-0 pb-0 mb-0" id="chatBox" onclick="toggle_chat()">
-    <header class="d-flex justify-content-between w-100">
-      <div class="d-flex justify-content-end ms-5 ps-5">
-        <svg class="ms-5" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+  <div class="container-fluid bg-white chatWindow_position ps-0 pe-0 pb-0 mb-0" id="chatBox">
+    <header class="d-flex justify-content-center w-100">
+        <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
           <g fill="none" fill-rule="evenodd">
             <circle cx="24" cy="24" r="24"></circle>
             <path d="M12 12h24v24H12z"></path>
@@ -604,8 +337,7 @@
               fill="#FFF" fill-rule="nonzero"></path>
           </g>
         </svg>
-      </div>
-      <div class="icon-close float-end mt-2 me-3" id="trying">
+      <div class="icon-close mt-2 me-3" id="trying" onclick="toggle_chat()">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="24" viewBox="0 0 24 24">
           <path d="M0 10h18v4h-24z" fill="#fff"></path>
         </svg>
@@ -706,14 +438,64 @@
 <script>
   const expandAll = () => {
     let expandEvents = document.getElementsByClassName("accordion-item");
-    for (let i of expandEvents) {
-      let temp = i.childNodes[3].classList;
-      if (temp.contains("show")) {
-        temp.remove("show");
-        document.getElementById("expand_all").innerHTML = "Expand all";
-      } else {
-        temp.add("show");
+    console.log("expand", expandEvents);
+    // let expandButtons = document.getElementsByClassName("accordion-button");
+    // for (let i of expandEvents) {
+    //   let tempExpand = i.childNodes[3].classList;
+    //   let tempButton = i.childNodes[1].firstChild.nextSibling.classList;
+    //   let tempAria = i.childNodes[1].firstChild.nextSibling.ariaExpanded
+    //   console.log(tempExpand, tempButton, tempAria);
+    //   console.log("hi", document.getElementById("expand_all").innerHTML)
+    // if (document.getElementById("expand_all").innerHTML.trim() === "Expand all") {
+    //   console.log("into expand");
+    //   tempExpand.add("show");
+    //   tempButton.remove("collapsed")
+    //   document.getElementById("expand_all").innerHTML = "Collapse all"
+    //   i.childNodes[1].firstChild.nextSibling.ariaExpanded = true;
+    // } else if (document.getElementById("expand_all").innerHTML === "Collapse all") {
+    //   console.log("into collapse");
+    //   tempExpand.remove("show");
+    //   tempButton.add("collapsed");
+    //   i.childNodes[1].firstChild.nextSibling.ariaExpanded = false
+    //   document.getElementById("expand_all").innerHTML = "Expand all"
+    // } else {
+    //   console.log("error");
+    //   return 0
+    // }
+    // if (tempExpand.contains("show")) {
+    // tempExpand.remove("show");
+    // tempButton.add("collapsed");
+    // i.childNodes[1].firstChild.nextSibling.ariaExpanded = true;
+    // document.getElementById("expand_all").innerHTML = "Expand all";
+    // } else {
+    // tempExpand.add("show");
+    // tempButton.remove("collapsed")
+    // i.childNodes[1].firstChild.nextSibling.ariaExpanded = false
+    // document.getElementById("expand_all").innerHTML = "Collapse all";
+    // }
+    // }
+
+    if (document.getElementById("expand_all").innerHTML === "Expand all") {
+      for (let i of expandEvents) {
+        console.log("i",i.childNodes[3]);
+        let tempExpand = i.childNodes[3].classList;
+        let tempButton = i.childNodes[1].firstChild.nextSibling.classList;
+        let tempAria = i.childNodes[1].firstChild.nextSibling.ariaExpanded;
+        tempExpand.add("show");
+        tempButton.remove("collapsed")
+        i.childNodes[1].firstChild.nextSibling.ariaExpanded = false
         document.getElementById("expand_all").innerHTML = "Collapse all";
+      }
+    } else {
+      for (let i of expandEvents) {
+        console.log("i", i.childNodes[3]);
+        let tempExpand = i.childNodes[3].classList;
+        let tempButton = i.childNodes[1].firstChild.nextSibling.classList;
+        let tempAria = i.childNodes[1].firstChild.nextSibling.ariaExpanded;
+        tempExpand.remove("show");
+        tempButton.add("collapsed");
+        i.childNodes[1].firstChild.nextSibling.ariaExpanded = true;
+        document.getElementById("expand_all").innerHTML = "Expand all";
       }
     }
   };
@@ -731,6 +513,7 @@
       chatWindow.style.display = "block";
       chatBoxWindow.style.visibility = "hidden";
     }
+    return
   };
 
 </script>

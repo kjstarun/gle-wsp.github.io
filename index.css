@@ -1,0 +1,572 @@
+@import url("https://fonts.googleapis.com/css?family=Pacifico|Open+Sans:300");
+
+#custom_responsive_navbar {
+  background-color: #fff;
+  height: 90vh;
+  overflow-y: scroll;
+}
+
+:focus {
+  outline: 0 !important;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: rgba(232, 240, 254, 0.35);
+  /* color: unset; */
+  box-shadow: unset;
+}
+
+.accordion-button:not(.collapsed)::after {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
+}
+
+#custom_responsive_accordion_parent {
+  overflow-y: scroll;
+  height: 100%;
+}
+
+#custom_responsive_accordion_parent button {
+  color: unset !important;
+}
+
+#pricing_responsive {
+  background-color: #fff;
+}
+
+#pricing_parent_responisve .accordion-header .accordion-button::after {
+  background-image: initial !important;
+}
+
+.outer-menu {
+  position: fixed;
+  /* top: 10vh; */
+  left: 0;
+  z-index: 1;
+}
+
+.outer-menu .checkbox-toggle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  opacity: 0;
+}
+
+.outer-menu .checkbox-toggle:checked + .hamburger > div {
+  transform: rotate(135deg);
+}
+
+.outer-menu .checkbox-toggle:checked + .hamburger > div:before,
+.outer-menu .checkbox-toggle:checked + .hamburger > div:after {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+.outer-menu .checkbox-toggle:checked + .hamburger > div:after {
+  opacity: 0;
+}
+
+.outer-menu .checkbox-toggle:checked ~ .menu {
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.outer-menu .checkbox-toggle:checked ~ .menu > div {
+  transform: scale(1);
+  transition-duration: 0.75s;
+}
+
+.outer-menu .checkbox-toggle:checked ~ .menu > div > div {
+  opacity: 1;
+  transition: opacity 0.4s ease 0.4s;
+}
+
+/* .outer-menu .checkbox-toggle:hover + .hamburger {
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+} */
+
+.outer-menu .checkbox-toggle:checked:hover + .hamburger > div {
+  transform: rotate(225deg);
+}
+
+.outer-menu .hamburger {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  width: 60px;
+  height: 40px;
+  padding: 0.5em 1em;
+  background: #fff;
+  border-radius: 0 0.12em 0.12em 0;
+  cursor: pointer;
+  transition: box-shadow 0.4s ease;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.outer-menu .hamburger > div {
+  position: relative;
+  flex: none;
+  width: 100%;
+  height: 2px;
+  background: #000000;
+  transition: all 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.outer-menu .hamburger > div:before,
+.outer-menu .hamburger > div:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: inherit;
+  transition: all 0.4s ease;
+}
+
+.outer-menu .hamburger > div:after {
+  top: 10px;
+}
+
+.outer-menu .menu {
+  position: fixed;
+  top: 63px;
+  z-index: 100;
+  left: 0;
+  height: 100vh;
+  pointer-events: none;
+  visibility: hidden;
+  overflow: hidden;
+  backface-visibility: hidden;
+  outline: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: grey;
+}
+
+#hamburger_menu {
+  display: none;
+}
+
+/*  */
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+.text-navbar {
+  font-size: 13px;
+}
+
+.navbar-nav .nav-item {
+  color: #545454;
+  cursor: pointer;
+}
+
+.navbar-nav .nav-item:hover {
+  color: black;
+}
+
+.navbar-nav .nav-link {
+  cursor: pointer;
+  color: #1a73e8;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #174ea6;
+}
+
+.btn-outline-secondary {
+  border: 0.5px solid rgba(128, 128, 128, 0.37);
+  border-radius: 3px;
+  color: #1a73e8;
+}
+
+.btn-outline-secondary:hover {
+  color: #174ea6;
+  background-color: #f1f3f4;
+  border-color: #1a73e879;
+}
+
+.btn-primary {
+  border-radius: 3px;
+}
+
+/*  */
+
+.sticky_nav {
+  position: sticky !important;
+  top: -1px;
+  z-index: 10;
+  box-shadow: 1px -1px 5px rgba(0, 0, 0, 0.5);
+  height: 65px;
+  background-color: #fff;
+}
+
+#custom_button {
+  padding: 11px 28px;
+  font-size: 14px;
+  background-color: #1a73e8;
+  font-weight: bolder;
+  vertical-align: middle;
+  border-radius: 4px;
+  font-weight: 500;
+  letter-spacing: 0;
+  font-family: "Google Sans", Arial, sans-serif;
+  min-width: 151px;
+}
+
+#custom_button_contact {
+  padding: 11px 28px;
+  font-size: 14px;
+  font-weight: 500;
+  vertical-align: middle;
+  border-radius: 4px;
+  color: #1a73e8;
+  font-weight: 500;
+  letter-spacing: 0;
+  font-family: "Google Sans", Arial, sans-serif;
+  min-width: 150px;
+}
+
+.custom_button_contact:hover {
+  background-color: #f1f3f4;
+}
+
+.admin {
+  font-weight: 500;
+  font-family: "Google Sans", Arial, sans-serif;
+  font-size: 14px;
+}
+
+#custom_nav_button_bar {
+  width: 35%;
+}
+
+#navbarNavAltMarkup {
+  gap: 20px;
+}
+
+#nav_custom_item {
+  color: #5f6368;
+  letter-spacing: 0.25px;
+  font-size: 14px;
+  /* font-weight: 400; */
+  font-family: "Google Sans", Roboto, Arial, Helvetica, sans-serif;
+}
+
+#nav_custom_item:hover {
+  color: black;
+}
+
+.custom_responsive_nav {
+  display: none;
+}
+
+#video {
+  /* margin-top: 10px; */
+  max-width: 100%;
+  height: 87%;
+}
+
+#custom_left_banner {
+  width: calc((100% - 80px) * 0.6);
+  margin-left: 16px;
+}
+
+.box {
+  /* box-sizing: unset; */
+  /* margin-top: 100px;
+      margin-left: 250px; */
+  margin-top: 50px;
+  width: calc(50% - 80px);
+  max-width: calc(362px * 2 + 24px);
+}
+
+.product-image {
+  background-size: 32px 32px;
+  width: 32px;
+  height: 32px;
+  gap: 250px;
+}
+
+.title {
+  font-size: 54px;
+  line-height: 1.2em;
+  color: #202124;
+  margin: 0 0 16px;
+  font-family: "Google Sans", Arial, sans-serif;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.text {
+  margin: 0 0 24px 5px;
+  font-size: 20px;
+  font-family: "Google Sans", Arial, sans-serif;
+  width: 70%;
+  text-align: left;
+  line-height: 28px;
+}
+
+.expand-button {
+  color: #1a73e8;
+}
+
+.expand-button:hover {
+  background-color: #1a73e819;
+  color: #1a73e8;
+}
+
+.custom-acc {
+  padding-bottom: 15px;
+  padding-top: 15px;
+  border: none;
+  border-bottom: 0.1px solid rgba(128, 128, 128, 0.202);
+}
+
+.accordion-header button {
+  color: #1a73e8;
+  background-color: white;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: white;
+}
+
+#toggle_chat {
+  display: block;
+  position: fixed;
+  bottom: 20px;
+  right: 2%;
+}
+
+#chatBox {
+  visibility: hidden;
+}
+
+.chatWindow_position {
+  position: fixed;
+  bottom: 20px;
+  right: 2%;
+  width: 375px;
+  height: 575px;
+  border-radius: 25px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  z-index: 100;
+}
+
+.chatWindow_position header {
+  height: 50px;
+  margin-left: 0;
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+  background-color: #1a73e8;
+}
+
+#trying {
+  position: absolute;
+  right: 2%;
+}
+
+.avatar {
+  border-radius: 50px;
+  background-color: rgba(128, 128, 128, 0.25);
+  text-align: center;
+  height: 35px;
+  width: 35px;
+  border: none;
+  margin: 40px 0 0 10px;
+}
+
+.welcome_message {
+  padding: 10px 12px;
+  border: 1px solid rgba(128, 128, 128, 0.26);
+  font-size: 14px;
+  border-radius: 20px;
+  text-align: left;
+  width: 275px;
+}
+
+.chat-container {
+  height: 77%;
+}
+
+.footer {
+  border-top: 1px solid rgba(128, 128, 128, 0.309);
+  margin-bottom: 0;
+  padding-bottom: 0;
+  height: 275px;
+}
+
+.footer-content {
+  height: 50px;
+}
+
+.chat_footer_text {
+  font-size: 10px;
+  color: rgba(128, 128, 128, 0.62);
+}
+
+.goggle_logo_chat_footer {
+  margin-bottom: 11px;
+  margin-left: 2px;
+}
+
+.list-group p {
+  color: #1a73e8;
+}
+
+.list-group small {
+  color: rgba(0, 0, 0, 0.697);
+}
+
+.list-custom {
+  border-radius: 10px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.list-group a {
+  padding: 10px 15px;
+}
+
+.chat_textarea {
+  border: none;
+  outline: none;
+  padding: 10px 0 5px 25px;
+}
+
+::placeholder {
+  color: rgba(128, 128, 128, 0.809);
+}
+
+.outer_inputbox {
+  height: 50px;
+  border-top: 1px solid rgba(128, 128, 128, 0.387);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.387);
+}
+
+.chat_send_logo {
+  margin-right: 15px;
+}
+
+.nav-item a {
+  font-size: 14px;
+}
+
+@media screen and (max-width: 980px) {
+  #banner_custom {
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding-left: 0;
+  }
+
+  #custom_left_banner {
+    width: 100% !important;
+    margin-left: unset;
+  }
+
+  #custom_banner {
+    align-items: center !important;
+  }
+
+  .products {
+    justify-content: center !important;
+    align-items: center;
+  }
+
+  .title {
+    font-size: 48px;
+    text-align: center;
+    line-height: 58px;
+    width: 103%;
+  }
+
+  .text {
+    font-size: 16px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .box {
+    width: 100%;
+  }
+
+  #hamburger_menu {
+    display: contents;
+  }
+
+  .outer-menu ~ img {
+    margin-left: 40px;
+  }
+
+  .sticky_nav {
+    flex-direction: unset !important;
+  }
+
+  .chatWindow_position {
+    position: fixed;
+    bottom: 4px;
+    left: 0%;
+    width: 100%;
+    height: 100vh;
+  }
+
+  .admin{
+    padding-left: 20px !important;
+    margin-top: 10px;
+    font-weight: unset;
+  }
+}
+
+@media screen and (max-width: 1155px) and (min-width: 992px) {
+  .custom_responsive_nav {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: unset;
+    margin: unset;
+    margin-top: 13px;
+    padding-top: 2px;
+    box-shadow: -1px 1px 4px -2px #000;
+  }
+
+  .sticky_nav {
+    box-shadow: unset;
+    border-bottom: 1px solid grey;
+  }
+
+  #custom_remove-nav {
+    /* visibility: hidden; */
+    display: none !important;
+  }
+
+  #responive_button_bar .navbar-collapse {
+    flex-grow: unset;
+  }
+
+  #banner_custom {
+    margin-top: 6rem !important;
+  }
+
+  #custom_left_banner {
+    width: unset;
+    margin-left: unset;
+  }
+
+  #banner_custom > .container-fluid {
+    padding-left: unset;
+  }
+}
