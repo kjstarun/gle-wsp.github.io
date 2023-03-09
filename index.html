@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Google Workspace</title>
-  <link rel="stylesheet" href="reset.css">
+  <!-- <link rel="stylesheet" href="reset.css"> -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet" />
@@ -14,6 +14,9 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
   <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/three-dots/0.3.2/three-dots.min.css"
+    integrity="sha512-+eTSgc6ThafkxKlVr4a/XE1HdNz3zNWLdq5vP8H7ac9MuW/LMQBXI3O3ueyyf33yeCn+KhkVP1wBYYIb0OZh3g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body class="mb-4" style="position: relative;">
@@ -111,7 +114,7 @@
                     </div>
                   </div>
                 </div>
-                  <a class="nav-link admin">Admin console</a>
+                <a class="nav-link admin">Admin console</a>
               </div>
             </div>
             <div class="w-50 bg-gradient w-100 row pe-3 ps-3 pt-4 border-top"
@@ -343,7 +346,7 @@
         </svg>
       </div>
     </header>
-    <div class="container-fluid w-auto chat-container">
+    <div class="container-fluid w-auto chat-container" id="input_chat_container">
       <div class="row">
         <button class="col-2 align-text-top avatar">
           <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100" fit=""
@@ -395,18 +398,20 @@
             </a>
           </div>
         </div>
+        <div id="custom_text_input" class="custom_chat_mesaage_parent"></div>
       </div>
     </div>
     <footer class="footer">
-      <div class="outer_inputbox d-flex align-items-center">
-        <input type="text" name="" id="" size="36" class="chat_textarea" placeholder="Enter message..." />
-        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 48 48" fit=""
-          preserveAspectRatio="xMidYMid meet" focusable="false" class="chat_send_logo">
+      <div class="outer_inputbox d-flex align-items-center justify-content-between">
+        <input type="text" name="" id="inputMessage" size="36" class="chat_textarea" placeholder="Enter message..."
+          onkeypress="detectEnter(event)" />
+        <svg onclick="handleChat()" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 48 48"
+          fit="" preserveAspectRatio="xMidYMid meet" focusable="false" class="chat_send_logo">
           <path d="M4.02 42L46 24 4.02 6 4 20l30 4-30 4z" fill="gray"></path>
         </svg>
       </div>
       <div class="footer-content d-flex align-items-center justify-content-center">
-        <p class="chat_footer_text mt-1">powered by</p>
+        <p class="chat_footer_text mt-1 mb-1">powered by</p>
         <svg xmlns="http://www.w3.org/2000/svg" width="45" height="15" viewBox="0 0 45 15"
           class="goggle_logo_chat_footer">
           <g fill="#AFB5BB" fill-rule="evenodd">
@@ -416,10 +421,8 @@
           </g>
         </svg>
       </div>
+      <!-- <p class="dot-flashing"></p> -->
     </footer>
-    <!-- Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque earum voluptatibus corrupti nemo quis
-        delectus, error distinctio ducimus veritatis reprehenderit quas, dolor, temporibus eius sed dolores
-        voluptates quia excepturi recusandae! -->
   </div>
   <div class="chat_position" id="toggle_chat" onclick="toggle_chat()">
     <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
@@ -511,6 +514,7 @@
     console.log("entred");
     let chatWindow = document.getElementById("toggle_chat");
     let chatBoxWindow = document.getElementById("chatBox");
+    chatWindow.style.display === '' ? chatWindow.style.display = "block" : '';
     if (chatWindow.style.display === "block") {
       console.log("true");
       chatWindow.style.display = "none";
@@ -522,6 +526,51 @@
     }
     return
   };
+
+
+  const handleChat = () => {
+    let chattingContainer = document.getElementById("input_chat_container")
+    let inputChatBox = document.getElementById("custom_text_input");
+    let inputMessage = document.getElementById("inputMessage").value;
+    console.log("input", inputMessage);
+
+    if (inputMessage.length >= 1) {
+      let chat = document.createElement("p");
+      chat.classList.add("chat_text");
+      chat.classList.add("outgoingMessage")
+      chat.innerHTML = inputMessage;
+      inputChatBox.append(chat);
+      console.log("height", inputChatBox.scrollHeight);
+      chattingContainer.scrollTo(0, document.getElementById("input_chat_container").scrollHeight)
+
+      let chatIncoming = document.createElement("p");
+      chatIncoming.classList.add("chat_text");
+      chatIncoming.classList.add("incomingMessage");
+
+      setTimeout(() => {
+        chatIncoming.append("....");
+        inputChatBox.append(chatIncoming);
+        chattingContainer.scrollTo(0, document.getElementById("input_chat_container").scrollHeight)
+      }, 500)
+
+
+      setTimeout(() => {
+        chatIncoming.innerHTML = inputMessage;
+        inputChatBox.append(chatIncoming);
+        chattingContainer.scrollTo(0, document.getElementById("input_chat_container").scrollHeight)
+      }, 2000)
+      document.getElementById("inputMessage").value = "";
+    } else {
+      return 0
+    }
+
+  }
+
+  const detectEnter = (event) => {
+    if (event.key === "Enter") {
+      handleChat()
+    }
+  }
 
 </script>
 
