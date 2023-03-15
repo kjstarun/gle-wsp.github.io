@@ -410,6 +410,7 @@
 .custom_chat_mesaage_parent {
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
 .chat_text {
@@ -418,12 +419,14 @@
   font: 400 14px/20px Roboto, Helvetica Neue, sans-serif;
   letter-spacing: 0.2px;
   /* width: fit-content; */
-  border-radius: 25px;
+  border-radius: 10px;
   padding: 10px 15px;
   min-width: auto;
   max-width: 70%;
   word-wrap: break-word;
-  height: fit-content;
+  position: relative;
+  display: inline-block;
+  user-select: none;
 }
 
 .outgoingMessage {
@@ -432,6 +435,25 @@
 
 .incomingMessage {
   align-self: flex-start;
+  background-color: rgb(222, 222, 249);
+}
+
+.optionsContainer {
+  position: absolute;
+  bottom: 96%;
+  right: 0%;
+  display: none;
+  flex-direction: row;
+  gap: 3px;
+  cursor: pointer;
+  background-color: rgb(243, 243, 243);
+  height: 20px;
+  padding: 2px 5px;
+  margin-bottom: 5px;
+}
+
+.chat_text:hover .edit {
+  display: block;
 }
 
 .footer {
@@ -482,6 +504,13 @@
   border: none;
   outline: none;
   padding: 10px 0 5px 25px;
+  width: 90%;
+  height: 40px;
+  resize: none;
+}
+
+.chat_textarea::-webkit-scrollbar {
+  display: none;
 }
 
 ::placeholder {

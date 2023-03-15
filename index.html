@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/three-dots/0.3.2/three-dots.min.css"
     integrity="sha512-+eTSgc6ThafkxKlVr4a/XE1HdNz3zNWLdq5vP8H7ac9MuW/LMQBXI3O3ueyyf33yeCn+KhkVP1wBYYIb0OZh3g=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body class="mb-4" style="position: relative;">
@@ -403,10 +404,10 @@
     </div>
     <footer class="footer">
       <div class="outer_inputbox d-flex align-items-center justify-content-between">
-        <input type="text" name="" id="inputMessage" size="36" class="chat_textarea" placeholder="Enter message..."
-          onkeypress="detectEnter(event)" />
-        <svg onclick="handleChat()" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 48 48"
-          fit="" preserveAspectRatio="xMidYMid meet" focusable="false" class="chat_send_logo">
+        <textarea type="text" name="" id="inputMessage" size="100" class="chat_textarea" placeholder="Enter message..."
+          onkeypress="detectEnter(event)"></textarea>
+        <svg onclick="handleChat(event)" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+          viewBox="0 0 48 48" fit="" preserveAspectRatio="xMidYMid meet" focusable="false" class="chat_send_logo">
           <path d="M4.02 42L46 24 4.02 6 4 20l30 4-30 4z" fill="gray"></path>
         </svg>
       </div>
@@ -435,6 +436,7 @@
       </g>
     </svg>
   </div>
+  <!-- <i class="fa fa-pencil fa-lg edit"></i> -->
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -519,6 +521,8 @@
       console.log("true");
       chatWindow.style.display = "none";
       chatBoxWindow.style.visibility = "visible";
+      let inputMessage = document.getElementById("inputMessage");
+      inputMessage.focus()
     } else {
       console.log("false")
       chatWindow.style.display = "block";
@@ -527,20 +531,139 @@
     return
   };
 
+  const create_UUID = () => {
+    var dt = new Date().getTime();
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      var r = (dt + Math.random() * 16) % 16 | 0;
+      dt = Math.floor(dt / 16);
+      return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+    return uuid;
+  }
 
-  const handleChat = () => {
+  let editingId = false;
+
+
+
+
+  const generateEditingIcon = () => {
+    let editIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="15" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+      <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+      </svg>`;
+    return editIcon;
+  }
+
+  const generateDeletingIcon = () => {
+    let deleteIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="15" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+        </svg>`
+    return deleteIcon
+  }
+
+  const displayOptionsContainer = (event, id) => {
+    let temp = document.getElementById(id);
+    if (temp.querySelector(".optionsContainer")) {
+      temp.querySelector(".optionsContainer").style.display = "flex";
+    }
+  }
+
+  const removeDisplayOptionsContainer = () => {
+    let temp = document.querySelectorAll(".optionsContainer");
+    for (let i of temp) {
+      i.style.display = "none"
+    }
+  }
+
+  const handleEditMessage = (event, id) => {
+    console.log("called");
+    console.log("event id", id);
+    let editMessage = document.getElementById(id).innerText;
+    let inputMessage = document.getElementById("inputMessage");
+    inputMessage.focus()
+    console.log("editmessage", editMessage);
+    inputMessage.value = editMessage;
+    editingId = id;
+    console.log("edit", editingId)
+  }
+
+  const handleDeleteMessage = (event, id) => {
+    document.getElementById(id).innerText = "You deleted this message";
+    document.getElementById(id).style.backgroundColor = "#ffc0c0"
+  }
+
+  const handleChat = (event) => {
+    let inputMessage = document.getElementById("inputMessage").value;
+    if (editingId) {
+      console.log("editing", editingId)
+      let editingElement = document.getElementById(editingId);
+      editingElement.innerHTML = inputMessage;
+
+      let optionsContainer = document.createElement("div");
+      optionsContainer.className = "optionsContainer";
+      editingElement.ondblclick = function () {displayOptionsContainer(event, editingElement.id)};
+      window.onclick = function () {removeDisplayOptionsContainer()}
+
+
+      let editIconHolder = document.createElement("span");
+      editIconHolder.innerHTML = generateEditingIcon();
+      editIconHolder.onclick = function () {handleEditMessage(event, editingElement.id)};
+
+      let deleteIconHolder = document.createElement("span");
+      deleteIconHolder.innerHTML = generateDeletingIcon();
+      deleteIconHolder.onclick = function () {handleDeleteMessage(event, editingElement.id)};
+
+      optionsContainer.append(editIconHolder);
+      optionsContainer.append(deleteIconHolder);
+
+      editingElement.append(optionsContainer)
+
+      document.getElementById("inputMessage").value = "";
+      editingId = false;
+      return;
+    }
+
+    let timeStamp = event.timeStamp;
+    console.log("timeStamp", event.timeStamp)
+    var datetime = new Date(timeStamp * 1000);
+    console.log(datetime.toLocaleString());
     let chattingContainer = document.getElementById("input_chat_container")
     let inputChatBox = document.getElementById("custom_text_input");
-    let inputMessage = document.getElementById("inputMessage").value;
     console.log("input", inputMessage);
 
     if (inputMessage.length >= 1) {
       let chat = document.createElement("p");
+      // chat.contentEditable = true;
+      chat.spellcheck = false
       chat.classList.add("chat_text");
-      chat.classList.add("outgoingMessage")
+      chat.classList.add("outgoingMessage");
+      chat.id = create_UUID();
+      console.log("id", chat.id)
       chat.innerHTML = inputMessage;
+      // chat.dataset = 
+
+      let optionsContainer = document.createElement("div");
+      optionsContainer.className = "optionsContainer";
+      chat.ondblclick = function () {displayOptionsContainer(event, chat.id)};
+      window.onclick = function () {removeDisplayOptionsContainer()}
+
+      let editIconHolder = document.createElement("span");
+      editIconHolder.innerHTML = generateEditingIcon()
+      editIconHolder.onclick = function () {handleEditMessage(event, chat.id)};
+      // chat.append(editIconHolder)
+      optionsContainer.append(editIconHolder);
+
+      let deleteIconHolder = document.createElement("span");
+      deleteIconHolder.innerHTML = generateDeletingIcon()
+      deleteIconHolder.onclick = function () {handleDeleteMessage(event, chat.id)};
+      // chat.append(deleteIconHolder);
+      optionsContainer.append(deleteIconHolder);
+
+      chat.append(optionsContainer)
+
       inputChatBox.append(chat);
       console.log("height", inputChatBox.scrollHeight);
+      console.log("edit", inputChatBox);
       chattingContainer.scrollTo(0, document.getElementById("input_chat_container").scrollHeight)
 
       let chatIncoming = document.createElement("p");
@@ -568,7 +691,8 @@
 
   const detectEnter = (event) => {
     if (event.key === "Enter") {
-      handleChat()
+      handleChat(event)
+      if (event.preventDefault) event.preventDefault();
     }
   }
 
