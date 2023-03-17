@@ -562,6 +562,9 @@
   }
 
   const displayOptionsContainer = (event, id) => {
+    if (editingId) {
+      return
+    }
     let temp = document.getElementById(id);
     if (temp.querySelector(".optionsContainer")) {
       temp.querySelector(".optionsContainer").style.display = "flex";
@@ -624,9 +627,10 @@
     }
 
     let timeStamp = event.timeStamp;
-    console.log("timeStamp", event.timeStamp)
-    var datetime = new Date(timeStamp * 1000);
-    console.log(datetime.toLocaleString());
+    // console.log("timeStamp", event.timeStamp)
+    var datetime = new Date(timeStamp);
+    console.log("timeStamp",datetime.toLocaleTimeString());
+    let time = datetime.toLocaleTimeString();
     let chattingContainer = document.getElementById("input_chat_container")
     let inputChatBox = document.getElementById("custom_text_input");
     console.log("input", inputMessage);
@@ -659,7 +663,12 @@
       // chat.append(deleteIconHolder);
       optionsContainer.append(deleteIconHolder);
 
+      let timeComponent = document.createElement("p");
+      timeComponent.textContent = time;
+      timeComponent.className = "time"
+
       chat.append(optionsContainer)
+      chat.append(timeComponent)
 
       inputChatBox.append(chat);
       console.log("height", inputChatBox.scrollHeight);

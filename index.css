@@ -403,8 +403,8 @@
 
 .chat-container {
   overflow-y: auto;
-  overflow-x: hidden;
   height: 80%;
+  overscroll-behavior: contain;
 }
 
 .custom_chat_mesaage_parent {
@@ -440,7 +440,7 @@
 
 .optionsContainer {
   position: absolute;
-  bottom: 96%;
+  bottom: 100%;
   right: 0%;
   display: none;
   flex-direction: row;
@@ -454,6 +454,14 @@
 
 .chat_text:hover .edit {
   display: block;
+}
+
+.time {
+  position: absolute;
+  top :100%;
+  right: 0;
+  /* background-color: yellow; */
+  font-size: 7px;
 }
 
 .footer {
