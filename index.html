@@ -543,9 +543,6 @@
 
   let editingId = false;
 
-
-
-
   const generateEditingIcon = () => {
     let editIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="15" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
       <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
@@ -579,15 +576,19 @@
   }
 
   const handleEditMessage = (event, id) => {
-    console.log("called");
-    console.log("event id", id);
+    // console.log("called");
+    // console.log("event id", id);
+    console.log("edtiting element", document.getElementById(id).innerText)
     let editMessage = document.getElementById(id).innerText;
+    let index = editMessage.lastIndexOf("\n");
+    let temp = editMessage.slice(0, index);
+    console.log("final temp", temp, index)
     let inputMessage = document.getElementById("inputMessage");
     inputMessage.focus()
-    console.log("editmessage", editMessage);
-    inputMessage.value = editMessage;
+    // console.log("editmessage", editMessage);
+    inputMessage.value = temp;
     editingId = id;
-    console.log("edit", editingId)
+    // console.log("edit", editingId)
   }
 
   const handleDeleteMessage = (event, id) => {
@@ -595,12 +596,20 @@
     document.getElementById(id).style.backgroundColor = "#ffc0c0"
   }
 
+  const generateTimeStamp = (event) => {
+    let timeStamp = event.timeStamp
+    var datetime = new Date(timeStamp);
+    // console.log("timeStamp", datetime.toLocaleTimeString());
+    let time = datetime.toLocaleTimeString();
+    return time
+  }
+
   const handleChat = (event) => {
     let inputMessage = document.getElementById("inputMessage").value;
     if (editingId) {
       console.log("editing", editingId)
       let editingElement = document.getElementById(editingId);
-      editingElement.innerHTML = inputMessage;
+      editingElement.innerText = inputMessage;
 
       let optionsContainer = document.createElement("div");
       optionsContainer.className = "optionsContainer";
@@ -619,18 +628,21 @@
       optionsContainer.append(editIconHolder);
       optionsContainer.append(deleteIconHolder);
 
-      editingElement.append(optionsContainer)
+      let time = generateTimeStamp(event);
+      let timeComponent = document.createElement("p");
+      timeComponent.textContent = time;
+      timeComponent.className = "time"
+
+      editingElement.append(optionsContainer);
+      editingElement.append(timeComponent)
 
       document.getElementById("inputMessage").value = "";
       editingId = false;
       return;
     }
 
-    let timeStamp = event.timeStamp;
-    // console.log("timeStamp", event.timeStamp)
-    var datetime = new Date(timeStamp);
-    console.log("timeStamp",datetime.toLocaleTimeString());
-    let time = datetime.toLocaleTimeString();
+    let time = generateTimeStamp(event);
+
     let chattingContainer = document.getElementById("input_chat_container")
     let inputChatBox = document.getElementById("custom_text_input");
     console.log("input", inputMessage);
@@ -643,8 +655,9 @@
       chat.classList.add("outgoingMessage");
       chat.id = create_UUID();
       console.log("id", chat.id)
-      chat.innerHTML = inputMessage;
+      chat.innerText = inputMessage;
       // chat.dataset = 
+      console.log("inputmessae", inputMessage)
 
       let optionsContainer = document.createElement("div");
       optionsContainer.className = "optionsContainer";
@@ -699,10 +712,13 @@
   }
 
   const detectEnter = (event) => {
-    if (event.key === "Enter") {
+    if (event.keyCode == 13 && event.shiftKey) {
+      console.log("Triggered shift + enter")
+      return 0
+    } else if (event.key === "Enter") {
       handleChat(event)
       if (event.preventDefault) event.preventDefault();
-    }
+    };
   }
 
 </script>
