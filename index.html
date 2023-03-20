@@ -700,7 +700,7 @@
 
 
       setTimeout(() => {
-        chatIncoming.innerHTML = inputMessage;
+        chatIncoming.innerText = inputMessage;
         inputChatBox.append(chatIncoming);
         chattingContainer.scrollTo(0, document.getElementById("input_chat_container").scrollHeight)
       }, 2000)
