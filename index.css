@@ -225,7 +225,7 @@
   font-weight: 500;
   letter-spacing: 0;
   font-family: "Google Sans", Arial, sans-serif;
-  min-width: 151px;
+  min-width: 155px;
 }
 
 #custom_button_contact {
@@ -458,7 +458,7 @@
 
 .time {
   position: absolute;
-  top :100%;
+  top: 100%;
   right: 0;
   /* background-color: yellow; */
   font-size: 7px;
