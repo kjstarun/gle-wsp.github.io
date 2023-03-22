@@ -3,7 +3,7 @@
 #custom_responsive_navbar {
   background-color: #fff;
   height: 90vh;
-  overflow-y: scroll;
+  overscroll-behavior: contain;
 }
 
 :focus {
@@ -24,6 +24,22 @@
 #custom_responsive_accordion_parent {
   overflow-y: scroll;
   height: 100%;
+  color: rgb(101, 99, 99);
+  font-size: 28px !important;
+}
+
+#custom_responsive_accordion_parent button,
+#custom_responsive_accordion_parent .accordion-body {
+  color: #616161;
+  cursor: pointer;
+  font-family: "Google Sans", Roboto, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  margin-bottom: 0;
+  padding: 16px;
+  position: relative;
+  width: 100%;
 }
 
 #custom_responsive_accordion_parent button {
@@ -299,7 +315,16 @@
   background-size: 32px 32px;
   width: 32px;
   height: 32px;
-  gap: 250px;
+}
+
+/* .nested-accordion-plain-text{
+  background-color: blue !important;
+} */
+
+.product-image-res {
+  background-size: 32px 32px;
+  width: 25px;
+  height: 25px;
 }
 
 .title {
@@ -515,6 +540,7 @@
   width: 90%;
   height: 40px;
   resize: none;
+  overscroll-behavior: contain;
 }
 
 .chat_textarea::-webkit-scrollbar {
