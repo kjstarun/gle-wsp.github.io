@@ -13,7 +13,6 @@
 
 .accordion-button:not(.collapsed) {
   background-color: rgba(232, 240, 254, 0.35);
-  /* color: unset; */
   box-shadow: unset;
 }
 
@@ -23,6 +22,7 @@
 
 #custom_responsive_accordion_parent {
   overflow-y: scroll;
+  overflow-x: hidden;
   height: 100%;
   color: rgb(101, 99, 99);
   font-size: 28px !important;
@@ -56,7 +56,6 @@
 
 .outer-menu {
   position: fixed;
-  /* top: 10vh; */
   left: 0;
   z-index: 1;
 }
@@ -100,10 +99,6 @@
   opacity: 1;
   transition: opacity 0.4s ease 0.4s;
 }
-
-/* .outer-menu .checkbox-toggle:hover + .hamburger {
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
-} */
 
 .outer-menu .checkbox-toggle:checked:hover + .hamburger > div {
   transform: rotate(225deg);
@@ -178,6 +173,7 @@
 }
 
 /*  */
+
 * {
   font-family: "Roboto", sans-serif;
 }
@@ -279,7 +275,6 @@
   color: #5f6368;
   letter-spacing: 0.25px;
   font-size: 14px;
-  /* font-weight: 400; */
   font-family: "Google Sans", Roboto, Arial, Helvetica, sans-serif;
 }
 
@@ -292,7 +287,6 @@
 }
 
 #video {
-  /* margin-top: 10px; */
   max-width: 100%;
   height: 87%;
 }
@@ -303,9 +297,6 @@
 }
 
 .box {
-  /* box-sizing: unset; */
-  /* margin-top: 100px;
-      margin-left: 250px; */
   margin-top: 50px;
   width: calc(50% - 80px);
   max-width: calc(362px * 2 + 24px);
@@ -316,10 +307,6 @@
   width: 32px;
   height: 32px;
 }
-
-/* .nested-accordion-plain-text{
-  background-color: blue !important;
-} */
 
 .product-image-res {
   background-size: 32px 32px;
@@ -461,6 +448,7 @@
 .incomingMessage {
   align-self: flex-start;
   background-color: rgb(222, 222, 249);
+  position: relative;
 }
 
 .optionsContainer {
@@ -485,20 +473,21 @@
   position: absolute;
   top: 100%;
   right: 0;
-  /* background-color: yellow; */
+  font-size: 7px;
+}
+
+.time-incoming {
+  position: absolute;
+  top: 100%;
+  left: 0;
   font-size: 7px;
 }
 
 .footer {
-  /* border-top: 1px solid rgba(128, 128, 128, 0.309); */
   position: absolute;
   bottom: 0;
   width: 100%;
 }
-
-/* .footer-content {
-  height: 50px;
-} */
 
 .chat_footer_text {
   font-size: 10px;
@@ -662,7 +651,6 @@
   }
 
   #custom_remove-nav {
-    /* visibility: hidden; */
     display: none !important;
   }
 
@@ -683,20 +671,3 @@
     padding-left: unset;
   }
 }
-
-/* Three dots */
-
-/* .dot-flashing {
-  background-color: gray !important;
-  color: gray !important;
-}
-
-.dot-flashing::after {
-  background-color: rgb(235, 37, 37) !important;
-  color: gray !important;
-}
-
-.dot-flashing::before {
-  background-color: rgb(234, 120, 120) !important;
-  color: grey !important;
-} */

@@ -6,7 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Google Workspace</title>
-  <!-- <link rel="stylesheet" href="reset.css"> -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet" />
@@ -381,9 +380,7 @@
   </div>
   <div class="container-fluid row px-5 mt-5">
     <div class="col-lg-8">
-      <button class="btn expand-button float-end mb-2" onclick="expandAll()" id="expand_all">
-        Expand all
-      </button>
+      <button class="btn expand-button float-end mb-2" onclick="expandAll()" id="expand_all">Expand all</button>
       <div class="accordion" id="accordionPanelsStayOpenExample">
         <div class="accordion-item custom-acc">
           <h2 class="accordion-header" id="panelsStayOpen-headingOne">
@@ -601,7 +598,6 @@
           </g>
         </svg>
       </div>
-      <!-- <p class="dot-flashing"></p> -->
     </footer>
   </div>
   <div class="chat_position" id="toggle_chat" onclick="toggle_chat()">
@@ -615,59 +611,18 @@
       </g>
     </svg>
   </div>
-  <!-- <i class="fa fa-pencil fa-lg edit"></i> -->
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script>
   const expandAll = () => {
     let expand = document.getElementById("accordionPanelsStayOpenExample").childNodes
-    console.log("test", expand);
     let expandEvents = []
     for (let i in expand) {
-      console.log(i);
       if (i % 2 !== 0) {
         expandEvents.push(expand[i])
       }
     }
-    // let expandEvents = document.getElementsByClassName("accordion-item");
-    console.log("expand", expandEvents);
-    // let expandButtons = document.getElementsByClassName("accordion-button");
-    // for (let i of expandEvents) {
-    //   let tempExpand = i.childNodes[3].classList;
-    //   let tempButton = i.childNodes[1].firstChild.nextSibling.classList;
-    //   let tempAria = i.childNodes[1].firstChild.nextSibling.ariaExpanded
-    //   console.log(tempExpand, tempButton, tempAria);
-    //   console.log("hi", document.getElementById("expand_all").innerHTML)
-    // if (document.getElementById("expand_all").innerHTML.trim() === "Expand all") {
-    //   console.log("into expand");
-    //   tempExpand.add("show");
-    //   tempButton.remove("collapsed")
-    //   document.getElementById("expand_all").innerHTML = "Collapse all"
-    //   i.childNodes[1].firstChild.nextSibling.ariaExpanded = true;
-    // } else if (document.getElementById("expand_all").innerHTML === "Collapse all") {
-    //   console.log("into collapse");
-    //   tempExpand.remove("show");
-    //   tempButton.add("collapsed");
-    //   i.childNodes[1].firstChild.nextSibling.ariaExpanded = false
-    //   document.getElementById("expand_all").innerHTML = "Expand all"
-    // } else {
-    //   console.log("error");
-    //   return 0
-    // }
-    // if (tempExpand.contains("show")) {
-    // tempExpand.remove("show");
-    // tempButton.add("collapsed");
-    // i.childNodes[1].firstChild.nextSibling.ariaExpanded = true;
-    // document.getElementById("expand_all").innerHTML = "Expand all";
-    // } else {
-    // tempExpand.add("show");
-    // tempButton.remove("collapsed")
-    // i.childNodes[1].firstChild.nextSibling.ariaExpanded = false
-    // document.getElementById("expand_all").innerHTML = "Collapse all";
-    // }
-    // }
-
     if (document.getElementById("expand_all").innerHTML === "Expand all") {
       for (let i of expandEvents) {
         let tempExpand = i.childNodes[3].classList;
@@ -692,18 +647,15 @@
   };
 
   const toggle_chat = () => {
-    console.log("entred");
     let chatWindow = document.getElementById("toggle_chat");
     let chatBoxWindow = document.getElementById("chatBox");
     chatWindow.style.display === '' ? chatWindow.style.display = "block" : '';
     if (chatWindow.style.display === "block") {
-      console.log("true");
       chatWindow.style.display = "none";
       chatBoxWindow.style.visibility = "visible";
       let inputMessage = document.getElementById("inputMessage");
-      inputMessage.focus()
+      inputMessage.focus();
     } else {
-      console.log("false")
       chatWindow.style.display = "block";
       chatBoxWindow.style.visibility = "hidden";
     }
@@ -755,18 +707,14 @@
   }
 
   const handleEditMessage = (event, id) => {
-    console.log("edtiting element", document.getElementById(id).innerText)
     let editMessage = document.getElementById(id).innerText;
     let index = editMessage.lastIndexOf("\n");
     let temp = editMessage.slice(0, index - 1);
-    console.log("final temp", temp, index)
     let inputMessage = document.getElementById("inputMessage");
     inputMessage.focus();
-    // console.log("editmessage", editMessage);
     inputMessage.value = temp;
     editingId = id;
     inputMessage.scrollTo(0, document.getElementById("inputMessage").scrollHeight)
-    // console.log("edit", editingId)
   }
 
   const handleDeleteMessage = (event, id) => {
@@ -777,7 +725,6 @@
   const generateTimeStamp = (event) => {
     let timeStamp = event.timeStamp
     var datetime = new Date(timeStamp);
-    // console.log("timeStamp", datetime.toLocaleTimeString());
     let time = datetime.toLocaleTimeString();
     return time
   }
@@ -785,7 +732,6 @@
   const handleChat = (event) => {
     let inputMessage = document.getElementById("inputMessage").value;
     if (editingId) {
-      console.log("editing", editingId)
       let editingElement = document.getElementById(editingId);
       editingElement.innerText = inputMessage;
 
@@ -823,19 +769,14 @@
 
     let chattingContainer = document.getElementById("input_chat_container")
     let inputChatBox = document.getElementById("custom_text_input");
-    console.log("input", inputMessage);
 
     if (inputMessage.length >= 1) {
       let chat = document.createElement("p");
-      // chat.contentEditable = true;
       chat.spellcheck = false
       chat.classList.add("chat_text");
       chat.classList.add("outgoingMessage");
       chat.id = create_UUID();
-      console.log("id", chat.id)
       chat.innerText = inputMessage;
-      // chat.dataset = 
-      console.log("inputmessae", inputMessage)
 
       let optionsContainer = document.createElement("div");
       optionsContainer.className = "optionsContainer";
@@ -845,13 +786,11 @@
       let editIconHolder = document.createElement("span");
       editIconHolder.innerHTML = generateEditingIcon()
       editIconHolder.onclick = function () {handleEditMessage(event, chat.id)};
-      // chat.append(editIconHolder)
       optionsContainer.append(editIconHolder);
 
       let deleteIconHolder = document.createElement("span");
       deleteIconHolder.innerHTML = generateDeletingIcon()
       deleteIconHolder.onclick = function () {handleDeleteMessage(event, chat.id)};
-      // chat.append(deleteIconHolder);
       optionsContainer.append(deleteIconHolder);
 
       let timeComponent = document.createElement("p");
@@ -862,8 +801,6 @@
       chat.append(timeComponent)
 
       inputChatBox.append(chat);
-      console.log("height", inputChatBox.scrollHeight);
-      console.log("edit", inputChatBox);
       chattingContainer.scrollTo(0, document.getElementById("input_chat_container").scrollHeight)
 
       let chatIncoming = document.createElement("p");
@@ -879,6 +816,14 @@
 
       setTimeout(() => {
         chatIncoming.innerText = inputMessage;
+
+        let time = generateTimeStamp(event);
+
+        let timeComponent = document.createElement("p");
+        timeComponent.textContent = time;
+        timeComponent.className = "time-incoming"
+
+        chatIncoming.append(timeComponent);
         inputChatBox.append(chatIncoming);
         chattingContainer.scrollTo(0, document.getElementById("input_chat_container").scrollHeight)
       }, 2000)
@@ -891,7 +836,6 @@
 
   const detectEnter = (event) => {
     if (event.keyCode == 13 && event.shiftKey) {
-      console.log("Triggered shift + enter")
       return 0
     } else if (event.key === "Enter") {
       handleChat(event)
