@@ -625,7 +625,8 @@
     }
     if (document.getElementById("expand_all").innerHTML === "Expand all") {
       for (let i of expandEvents) {
-        let tempExpand = i.childNodes[3].classList;
+        let tempExpand = i.childNodes[3].classList
+        console.log("i", tempExpand)
         let tempButton = i.childNodes[1].firstChild.nextSibling.classList;
         let tempAria = i.childNodes[1].firstChild.nextSibling.ariaExpanded;
         tempExpand.add("show");
